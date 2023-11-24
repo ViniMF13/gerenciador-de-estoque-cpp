@@ -1,8 +1,9 @@
-#include "Item.cpp"
+#include "item.cpp"
 #include "Inventario.cpp"
 #include "Interface.cpp"
 #include "Movimentacao.cpp"
 #include <iostream>
+
 
 int main() {
     Inventario meuInventario;

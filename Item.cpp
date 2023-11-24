@@ -1,4 +1,6 @@
 #include "Item.hpp"
+#include "Include/json.hpp"
+
 #include <iostream>
 
 // Implementação dos construtores do Item

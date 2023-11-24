@@ -4,7 +4,7 @@
 
 void Interface::exibirMenu() {
     // Implementação do menu
-     std::cout << "O que voce deseja fazer?" << std::endl;
+     std::cout << "O que voce deseja faze ?" << std::endl;
         //Item
             std::cout << "1: Cadastrar novo item" << std::endl;
             std::cout << "2: Remover um item" << std::endl;
