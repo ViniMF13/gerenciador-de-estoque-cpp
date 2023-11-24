@@ -1,4 +1,8 @@
 #include "Movimentacao.hpp"
+#include "Include/json.hpp"
+
+#include <string>
+#include <ctime>
 
 Movimentacao::Movimentacao(const std::string& n, std::string& t, int q) : nome(n), tipo(t), quantidade(q) {
     data = std::time(0); // Obtém a data e hora atuais

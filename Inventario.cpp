@@ -1,11 +1,12 @@
-#include "Item.hpp"
 #include "Inventario.hpp"
+#include "Item.hpp"
 #include "Interface.hpp"
 #include "Movimentacao.hpp"
+#include "Include/json.hpp"
+
 #include <iostream>
 #include <fstream>
 #include <iomanip>  // Para std::setw
-#include "Include/json.hpp"
 
 
 bool Inventario::itemExiste(std::string nome){
