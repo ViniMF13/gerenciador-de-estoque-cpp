@@ -1,6 +1,7 @@
 #ifndef ITEM_H
 #define ITEM_H
 
+#include "Inventario.hpp"
 #include <string>
 
 class Item {
@@ -30,6 +31,8 @@ public:
 
     // Adicione um método à classe Item para serialização
     std::string toJson() const;
+
+    static void cadastrarItem(Inventario& inventario);
 
 private:
     std::string nome;

@@ -1,4 +1,6 @@
 #include "Item.hpp"
+#include "Inventario.hpp"
+#include "Interface.hpp"
 #include "Include/json.hpp"
 
 #include <iostream>
@@ -27,6 +29,22 @@ Item::Item(const std::string& jsonString) {
     this->nome = j["nome"];
     this->valor = j["valor"];
     this->quantidade = j["quantidade"];
+}
+
+void Item::cadastrarItem(Inventario& inventario){
+    std::string nome = Interface::lerValor<std::string>("Digite o nome do item que deseja cadastrar:");
+    double valor = Interface::lerValor<double>("Digite o valor do item:");
+    
+    // Verifica se já existe um item com o mesmo nome no inventário antes de adicionar
+    if(inventario.itemExiste(nome)){
+      // Se o Item existe------- +++++++++v
+      Interface::exibirMensagem("Erro: O Item ja esta cadastrado no sistema");
+    } else {
+      // Se o Item não existe, cria o item e adiciona ao inventário ------- +++++++++v
+      Item newItem = Item(nome, valor);
+      inventario.obterEstoque().insert(std::make_pair(newItem.getNome(), newItem));
+      Interface::exibirMensagem("O item foi cadastrado no inventario!");
+    }
 }
 
 // Implementação dos métodos getter

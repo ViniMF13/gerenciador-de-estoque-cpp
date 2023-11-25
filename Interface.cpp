@@ -1,6 +1,8 @@
 // Interface.cpp
 #include "Interface.hpp"
 #include <chrono>
+#include <iostream>
+#include <map>
 
 void Interface::exibirMenu() {
     // Implementação do menu
@@ -27,9 +29,9 @@ void Interface::exibirMensagem(const std::string& mensagem) {
     std::cout << mensagem << std::endl;
 }
 
-void Interface::exibirItens(const Inventario& inventario) {
+void Interface::exibirItens(Inventario& inventario) {
     std::cout << "Itens no inventário: " << std::endl;
-    for (const auto& par : inventario.obterEstoque()) {
+    for (auto& par : inventario.obterEstoque()) {
         std::cout << "Nome " << par.first << " Valor " << par.second.getValor() << " Quantidade " << par.second.getQuantidade() << std::endl;
     }
 }

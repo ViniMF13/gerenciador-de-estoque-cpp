@@ -1,18 +1,16 @@
 #ifndef INVENTARIO_H
 #define INVENTARIO_H
 
-#include "Item.hpp"
-#include "Movimentacao.hpp"
+class Item;
 
+#include "Movimentacao.hpp"
 #include <map>
 #include <vector>
 
 
 class Inventario {
 public:
-  /// @brief Cadastra um item no inventario
-  ///
-  void cadastrarItem();
+ 
 
   /// @brief Remove um item do inventario
   ///
@@ -46,7 +44,7 @@ public:
   
   /// @brief retorna o inventário
   ///
-  const std::map<std::string, Item>& obterEstoque() const;
+  std::map<std::string, Item>& obterEstoque();
 
   const std::vector<Movimentacao>& obterHistorico() const;
 

@@ -1,5 +1,6 @@
-#include "Inventario.hpp"
 #include "Item.hpp"
+#include "Inventario.hpp"
+
 #include "Interface.hpp"
 #include "Movimentacao.hpp"
 #include "Include/json.hpp"
@@ -24,21 +25,6 @@ Item& Inventario::getItem(std::string& nome){
       return it->second;
 }
 
-void Inventario::cadastrarItem(){
-    std::string nome = Interface::lerValor<std::string>("Digite o nome do item que deseja cadastrar:");
-    double valor = Interface::lerValor<double>("Digite o valor do item:");
-
-    // Verifica se já existe um item com o mesmo nome no inventário antes de adicionar
-    if(Inventario::itemExiste(nome)){
-      // Se o Item existe------- +++++++++v
-      Interface::exibirMensagem("Erro: O Item ja esta cadastrado no sistema");
-    } else {
-      // Se o Item não existe, cria o item e adiciona ao inventário ------- +++++++++v
-      Item newItem = Item(nome, valor);
-      estoque.insert(std::make_pair(newItem.getNome(), newItem));
-      Interface::exibirMensagem("O item foi cadastrado no inventario!");
-    }
-}
 
 void Inventario::removerItem(){
     std::string nome = Interface::lerValor<std::string>("Digite o nome do item que deseja remover");
@@ -191,7 +177,7 @@ void Inventario::carregarDados(const std::string& nomeArquivo1, const std::strin
     Interface::exibirMensagem("Dados do inventario carregados com sucesso");
 }
 
-const std::map<std::string, Item>& Inventario::obterEstoque() const {
+std::map<std::string, Item>& Inventario::obterEstoque() {
       return estoque;
 }
 

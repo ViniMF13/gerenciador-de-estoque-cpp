@@ -1,4 +1,4 @@
-#include "item.cpp"
+#include "Item.cpp"
 #include "Inventario.cpp"
 #include "Interface.cpp"
 #include "Movimentacao.cpp"
@@ -16,7 +16,7 @@ int main() {
         int n = Interface::lerValor<int>("Opssaum");
 
         if (n == 1) {
-            meuInventario.cadastrarItem();
+            Item::cadastrarItem(meuInventario);
             // Cadastrar itemor();
         } else if (n == 2) {
             // remover itens ao inventario
