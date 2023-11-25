@@ -1,4 +1,6 @@
-#pragma once
+#ifndef INTERFACE_H
+#define INTERFACE_H
+
 
 #include <iostream>
 #include "Inventario.hpp"
@@ -10,7 +12,7 @@ public:
     static void exibirMenu();
     static void exibirMensagem(const std::string& mensagem);
     static void limparTela();
-    static void exibirItens(const Inventario& inventario);
+    static void exibirItens(Inventario& inventario);
     static void exibirHistorico(const Inventario& inventario);
 
     template <typename T>
@@ -18,3 +20,4 @@ public:
 };
 
 
+#endif

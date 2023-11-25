@@ -1,26 +1,15 @@
 #ifndef INVENTARIO_H
 #define INVENTARIO_H
 
-#include "Item.hpp"
-#include "Movimentacao.hpp"
+class Item;
 
+#include "Movimentacao.hpp"
 #include <map>
 #include <vector>
 
 
 class Inventario {
 public:
-  /// @brief Cadastra um item no inventario
-  ///
-  void cadastrarItem();
-
-  /// @brief Remove um item do inventario
-  ///
-  void removerItem();
-  
-  /// @brief 
-  ///
-  void atualizarValor();
 
   /// @brief Adiciona uma quantiade de itens ao estoque
   ///
@@ -30,13 +19,13 @@ public:
   ///
   void retirarItens();
 
+  /// @brief verifica se o item existe no inventário
+  ///
+  bool itemExiste(std::string& nome);
+
   /// @brief retorna um item presente no inventario
   ///
   Item& getItem(std::string& nome);
-
-  /// @brief verifica se o item existe no inventário
-  ///
-  bool itemExiste(std::string nome);
 
   void adicionarMovimentacao(const std::string& nome, std::string tipo, int quantidade);
 
@@ -46,13 +35,13 @@ public:
   
   /// @brief retorna o inventário
   ///
-  const std::map<std::string, Item>& obterEstoque() const;
+  std::map<int, Item>& obterEstoque();
 
   const std::vector<Movimentacao>& obterHistorico() const;
 
 
 private:
-  std::map<std::string, Item> estoque;   
+  std::map<int, Item> estoque;   
   std::vector<Movimentacao> historico;    
 };
 
