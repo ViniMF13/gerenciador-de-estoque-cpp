@@ -23,7 +23,7 @@ int main() {
             Item::removerItem(meuInventario);
         } else if (n == 3) {
             // artualizarvalor itens ao inventario
-            meuInventario.atualizarValor();
+            Item::atualizarValor(meuInventario);
         } else if (n == 4) {
             // Adicionar itens ao inventario
             meuInventario.adicionarItens();

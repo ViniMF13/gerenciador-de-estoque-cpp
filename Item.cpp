@@ -60,6 +60,21 @@ void Item::removerItem(Inventario& inventario){
     }
 }
 
+void Item::atualizarValor(Inventario& inventario){
+    std::string nome = Interface::lerValor<std::string>("Digite o nome do item");
+
+    // Verifica se já existe o item no inventário
+    if (inventario.itemExiste(nome)) {
+      // Se o Item existe,  ------- +++++++++v
+       double valor = Interface::lerValor<int>("Digite o novo valor do item:");
+       inventario.getItem(nome).setValor(valor);
+       Interface::exibirMensagem("O valor do item foi autualizado");
+
+    } else {
+      Interface::exibirMensagem("O item não está cadastrado no inventário");
+    }
+}
+
 // Implementação dos métodos getter
 std::string Item::getNome() const {
     return nome;

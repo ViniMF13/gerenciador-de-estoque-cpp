@@ -26,21 +26,6 @@ Item& Inventario::getItem(std::string& nome){
 }
 
 
-void Inventario::atualizarValor(){
-    std::string nome = Interface::lerValor<std::string>("Digite o nome do item");
-
-    // Verifica se já existe o item no inventário
-    if (Inventario::itemExiste(nome)) {
-      // Se o Item existe,  ------- +++++++++v
-       double valor = Interface::lerValor<int>("Digite o valor do item:");
-       Inventario::getItem(nome).setValor(valor);
-       Interface::exibirMensagem("O valor do item foi autualizado");
-
-    } else {
-      Interface::exibirMensagem("O item não está cadastrado no inventário");
-    }
-}
-
 void Inventario::adicionarItens(){
   std::string nome = Interface::lerValor<std::string>("Digite o nome do item que deseja adicionar");
 

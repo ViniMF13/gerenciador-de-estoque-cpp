@@ -10,10 +10,6 @@ class Item;
 
 class Inventario {
 public:
- 
-  /// @brief 
-  ///
-  void atualizarValor();
 
   /// @brief Adiciona uma quantiade de itens ao estoque
   ///

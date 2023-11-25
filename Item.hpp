@@ -36,6 +36,8 @@ public:
 
     static void removerItem(Inventario& inventario);
 
+    static void atualizarValor(Inventario& inventario);
+
 private:
     std::string nome;
     double valor;
