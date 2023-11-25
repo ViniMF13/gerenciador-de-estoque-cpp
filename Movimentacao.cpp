@@ -1,5 +1,5 @@
 #include "Movimentacao.hpp"
-#include "Include/json.hpp"
+#include "Include/JSON/json.hpp"
 
 #include <string>
 #include <ctime>
@@ -25,6 +25,17 @@ Movimentacao::Movimentacao(const std::string& jsonString){
     this->data = j["data"];
 }
 
+std::string Movimentacao::toJson() const {
+    nlohmann::json j;
+
+    j["nome"] = nome;
+    j["tipo"] = tipo;
+    j["quantidade"] = quantidade;
+    j["data"] = data;
+
+    return j.dump(); // Converte o JSON para uma string
+}
+
 std::string Movimentacao::getNome() const {
     return nome;
 }
@@ -41,13 +52,3 @@ std::time_t Movimentacao::getData() const {
     return data;
 }
 
-std::string Movimentacao::toJson() const {
-    nlohmann::json j;
-
-    j["nome"] = nome;
-    j["tipo"] = tipo;
-    j["quantidade"] = quantidade;
-    j["data"] = data;
-
-    return j.dump(); // Converte o JSON para uma string
-}

@@ -3,28 +3,36 @@
 
 #include "Interface.hpp"
 #include "Movimentacao.hpp"
-#include "Include/json.hpp"
+#include "Include/JSON/json.hpp"
 
 #include <iostream>
+#include <string>
 #include <fstream>
 #include <iomanip>  // Para std::setw
 
 
-bool Inventario::itemExiste(std::string nome){
+bool Inventario::itemExiste(std::string& nome){
     // Itera pelo map e verifica se existe algum item com o nome passado
-    auto it = estoque.find(nome);
-    if(it == estoque.end()){
-      return false;  
-    } else {
-      return true; 
+    for (const auto& par : estoque) {
+        const Item& item = par.second;
+        if (item.getNome() == nome) {
+            return true;
+        }
     }
+    return false;
 }
 
 Item& Inventario::getItem(std::string& nome){
-    auto it = estoque.find(nome);
-      return it->second;
+  // Itera pelo map e verifica se existe algum item com o nome passado
+  for (auto& par : estoque) {
+    Item& item = par.second;
+    if (item.getNome() == nome) {
+        return item;
+    }
+  }
+  // Se o item não foi encontrado, lança uma exceção
+  throw std::runtime_error("Item não encontrado no inventário: " + nome);
 }
-
 
 void Inventario::adicionarItens(){
   std::string nome = Interface::lerValor<std::string>("Digite o nome do item que deseja adicionar");
@@ -80,76 +88,107 @@ void Inventario::adicionarMovimentacao(const std::string& nome, std::string tipo
 }
 
 void Inventario::salvarDados(const std::string& nomeArquivo1, const std::string& nomeArquivo2) {
-    nlohmann::json jsonInventario;  // Cria um objeto JSON para representar o inventário
-    nlohmann::json jsonHistorico;  // Cria um objeto JSON para representar o historico
+    try {
+        nlohmann::json jsonInventario;  // Cria um objeto JSON para representar o inventário
+        nlohmann::json jsonHistorico;   // Cria um objeto JSON para representar o histórico
 
-    // Itera sobre cada par (nome do item, objeto Item) no inventário
-    for (const auto& par : estoque) {
-      const Item& item = par.second;  // Obtém uma referência constante ao objeto Item
-      nlohmann::json jsonItem = item.toJson();  // Cria um objeto JSON para representar um item
-      
-      // Adiciona o objeto JSON do Item ao inventário JSON usando o nome como chave
-      jsonInventario[item.getNome()] = jsonItem;
+        // Limpa o JSON do inventário
+        jsonInventario.clear();
+
+        // Itera sobre cada par (id do item, objeto Item) no inventário
+        for (const auto& par : estoque) {
+            const Item& item = par.second;  // Obtém uma referência constante ao objeto Item
+            nlohmann::json jsonItem = item.toJson();  // Cria um objeto JSON para representar um item
+
+            // Adiciona o objeto JSON do Item ao inventário JSON usando a id como chave
+            std::string idItem = std::to_string(item.getId());
+            jsonInventario[idItem] = jsonItem;
+        }
+
+        // Itera sobre cada item no histórico
+        for (const auto& mov : historico) {
+            const Movimentacao& movimentacao = mov;  // Obtém uma referência constante ao objeto movimentacao
+            nlohmann::json jsonMov = movimentacao.toJson();  // Cria um objeto JSON para representar uma movimentação
+
+            // Adiciona o objeto JSON da Movimentacao ao histórico JSON
+            jsonHistorico.push_back(jsonMov);
+        }
+
+        // Cria os arquivos e grava os dados
+        std::ofstream arquivo1(nomeArquivo1);
+        std::ofstream arquivo2(nomeArquivo2);
+
+        if (!arquivo1.is_open() || !arquivo2.is_open()) {
+            throw std::runtime_error("Erro ao abrir arquivo para escrita.");
+        }
+
+        // Grava os dados no arquivo de inventario
+        arquivo1 << std::setw(4) << jsonInventario;
+        // Grava os dados no arquivo de historico
+        arquivo2 << std::setw(4) << jsonHistorico;
+
+        // Fechando os arquivos
+        arquivo1.close();
+        arquivo2.close();
+
+        Interface::exibirMensagem("Dados salvos com sucesso!");
+    } catch (const std::exception& e) {
+        // Captura e trata exceções padrão
+        std::cerr << "Erro durante a operação de salvar dados: " << e.what() << std::endl;
+        Interface::exibirMensagem("Erro ao salvar dados. Consulte o console para mais informações.");
+    } catch (...) {
+        // Captura exceções desconhecidas
+        std::cerr << "Erro desconhecido durante a operação de salvar dados." << std::endl;
+        Interface::exibirMensagem("Erro desconhecido ao salvar dados. Consulte o console para obter mais informações.");
     }
-
-     // Itera sobre cada item no historico
-    for (const auto& mov : historico) {
-      const Movimentacao& movimentacao = mov;  // Obtém uma referência constante ao objeto movimentacao
-      nlohmann::json jsonMov = movimentacao.toJson();  // Cria um objeto JSON para representar uma movimetação 
-            
-      // Adiciona o objeto JSON do Item ao inventário JSON usando o nome como chave
-      jsonHistorico.push_back(jsonMov);
-    }
-
-    // Cria os arquivos e grava os dados 
-    std::ofstream arquivo1(nomeArquivo1);
-    std::ofstream arquivo2(nomeArquivo2);
-    
-    arquivo1 << std::setw(4) << jsonInventario;
-    arquivo2 << std::setw(4) << jsonHistorico;
-
 }
 
 void Inventario::carregarDados(const std::string& nomeArquivo1, const std::string& nomeArquivo2) {
   std::ifstream arquivo(nomeArquivo1);
   std::ifstream arquivo2(nomeArquivo2);
 
-  if (!arquivo.is_open() && !arquivo2.is_open()) {
-      // Lidar com a falha ao abrir o arquivo, se necessário
-      std::cerr << "Erro ao abrir o arquivo JSON para leitura." << std::endl;
-      return;
+  try {
+      if (!arquivo.is_open() || !arquivo2.is_open()) {
+          throw std::runtime_error("Erro ao abrir o arquivo JSON para leitura.");
+      }
+
+      nlohmann::json jsonInventario;
+      nlohmann::json jsonHistorico;
+
+      arquivo >> jsonInventario;
+      arquivo2 >> jsonHistorico;
+
+      for (const auto& par : jsonInventario.items()) {
+          const nlohmann::json& jsonItem = par.value();
+
+          try {
+              // Cria um novo Item e adiciona ao inventário
+              Item item = Item(jsonItem);
+              estoque.insert(std::make_pair(item.getId(), item));
+          } catch (const nlohmann::json::exception& e) {
+              std::cerr << "Erro ao processar item do inventário: " << e.what() << std::endl;
+          }
+      }
+
+      for (const auto& mov : jsonHistorico.items()) {
+          const nlohmann::json& jsonMov = mov.value();
+
+          try {
+              // Cria uma nova movimentação e adiciona ao histórico
+              Movimentacao movimentacao = Movimentacao(jsonMov);
+              historico.push_back(movimentacao);
+          } catch (const nlohmann::json::exception& e) {
+              std::cerr << "Erro ao processar movimentação do histórico: " << e.what() << std::endl;
+          }
+      }
+
+      Interface::exibirMensagem("Dados do inventário carregados com sucesso");
+  } catch (const std::exception& e) {
+      std::cerr << "Erro ao carregar dados: " << e.what() << std::endl;
   }
-  
-  nlohmann::json jsonInventario;
-  nlohmann::json jsonHistorico;
-  arquivo >> jsonInventario;
-  arquivo2 >> jsonHistorico;
-
-  for (const auto& par : jsonInventario.items()) {
-    const nlohmann::json& jsonItem = par.value() ;
-
-    // Cria um novo Item e adiciona ao inventário
-    Item item = Item(jsonItem);
-    estoque.insert(std::make_pair(item.getNome(), item));
-  }
-
-  for (const auto& mov : jsonHistorico.items()) {
-    const nlohmann::json& jsonMov = mov.value();
-
-    // Cria um novo Item e adiciona ao inventário
-    Movimentacao movimentacao = Movimentacao(jsonMov);
-
-    // std::string tipo = jsonMov["tipo"];
-    // std::string nome = jsonMov["nome"]; 
-    // int quantidade = jsonMov["quantidade"];
-    // int data = jsonMov["data"];
-    
-    historico.push_back(movimentacao);
-  }
-    Interface::exibirMensagem("Dados do inventario carregados com sucesso");
 }
 
-std::map<std::string, Item>& Inventario::obterEstoque() {
+std::map<int, Item>& Inventario::obterEstoque() {
       return estoque;
 }
 

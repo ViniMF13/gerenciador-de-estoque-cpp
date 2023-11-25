@@ -32,7 +32,7 @@ void Interface::exibirMensagem(const std::string& mensagem) {
 void Interface::exibirItens(Inventario& inventario) {
     std::cout << "Itens no inventário: " << std::endl;
     for (auto& par : inventario.obterEstoque()) {
-        std::cout << "Nome " << par.first << " Valor " << par.second.getValor() << " Quantidade " << par.second.getQuantidade() << std::endl;
+        std::cout << "ID " << par.first << "Nome " << par.second.getNome() << " Valor " << par.second.getValor() << " Quantidade " << par.second.getQuantidade() << std::endl;
     }
 }
 
