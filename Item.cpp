@@ -47,6 +47,19 @@ void Item::cadastrarItem(Inventario& inventario){
     }
 }
 
+void Item::removerItem(Inventario& inventario){
+    std::string nome = Interface::lerValor<std::string>("Digite o nome do item que deseja remover");
+
+    // Verifica se já existe o item no inventário
+    if (inventario.itemExiste(nome)) {
+      // Se o Item existe, o remove do inventário ------- +++++++++v
+      inventario.obterEstoque().erase(inventario.obterEstoque().find(nome));
+      Interface::exibirMensagem("O item foi Removido do inventario!");
+    } else {
+      Interface::exibirMensagem("Erro: O item não está cadastrado no inventário.");
+    }
+}
+
 // Implementação dos métodos getter
 std::string Item::getNome() const {
     return nome;

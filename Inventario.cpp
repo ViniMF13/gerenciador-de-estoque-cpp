@@ -26,19 +26,6 @@ Item& Inventario::getItem(std::string& nome){
 }
 
 
-void Inventario::removerItem(){
-    std::string nome = Interface::lerValor<std::string>("Digite o nome do item que deseja remover");
-
-    // Verifica se já existe o item no inventário
-    if (Inventario::itemExiste(nome)) {
-      // Se o Item existe, o remove do inventário ------- +++++++++v
-      estoque.erase(estoque.find(nome));
-      Interface::exibirMensagem("O item foi Removido do inventario!");
-    } else {
-      Interface::exibirMensagem("Erro: O item não está cadastrado no inventário.");
-    }
-}
-
 void Inventario::atualizarValor(){
     std::string nome = Interface::lerValor<std::string>("Digite o nome do item");
 

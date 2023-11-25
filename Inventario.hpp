@@ -11,11 +11,6 @@ class Item;
 class Inventario {
 public:
  
-
-  /// @brief Remove um item do inventario
-  ///
-  void removerItem();
-  
   /// @brief 
   ///
   void atualizarValor();

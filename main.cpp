@@ -20,7 +20,7 @@ int main() {
             // Cadastrar itemor();
         } else if (n == 2) {
             // remover itens ao inventario
-            meuInventario.removerItem();
+            Item::removerItem(meuInventario);
         } else if (n == 3) {
             // artualizarvalor itens ao inventario
             meuInventario.atualizarValor();
