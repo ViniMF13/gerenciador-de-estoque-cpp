@@ -10,6 +10,15 @@
 #include <fstream>
 #include <iomanip>  // Para std::setw
 
+#define RESET   "\033[0m"
+#define RED     "\033[31m"
+#define GREEN   "\033[32m"
+#define YELLOW  "\033[33m"
+#define BLUE    "\033[34m"
+#define MAGENTA "\033[35m"
+#define CYAN    "\033[36m"
+
+
 
 bool Inventario::itemExiste(std::string& nome){
     // Itera pelo map e verifica se existe algum item com o nome passado
@@ -43,8 +52,11 @@ void Inventario::adicionarItens(){
     int quantidade = -1;
     while(quantidade < 0){
         quantidade = Interface::lerValor<int>("Digite a quantidade de itens");    
-        if(quantidade < 0)
+        if(quantidade < 0){
+            std::cout << RED << "" ;
             Interface::exibirMensagem("Valor invalido. ");
+            std::cout << RESET << "" ;
+        }
     }
 
     int qtd = Inventario::getItem(nome).getQuantidade();
@@ -55,10 +67,15 @@ void Inventario::adicionarItens(){
     Inventario::getItem(nome).setQuantidade(sum);
     
     Inventario::adicionarMovimentacao(nome, "entrada", quantidade);
-
+    Interface::limparTela();
+    std::cout << GREEN << "" ;
     Interface::exibirMensagem("A quantidade de itens foi atualizada");
+    std::cout << RESET << "";
   } else {
-    Interface::exibirMensagem("O item não existe no inventário");
+    Interface::limparTela();
+    std::cout << RED << "" ;
+    Interface::exibirMensagem("O item nao existe no inventario");
+    std::cout << RESET << "" ;
   }
 }
 
@@ -67,29 +84,44 @@ void Inventario::retirarItens(){
 
   // Verifica se o item está no inventário -------= = = = = = 
   if (Inventario::itemExiste(nome)) {
-  //se o item está no inventário -------= = = = = = 
+    //se o item está no inventário -------= = = = = = 
     int quantidade = -1;
     while(quantidade < 0){
         quantidade = Interface::lerValor<int>("Digite a quantidade de itens");    
-        if(quantidade < 0)
+        if(quantidade < 0){
+            std::cout << RED << "" ;
             Interface::exibirMensagem("Valor invalido. ");
+            std::cout << RESET << "" ;
+        }
     } 
     
     int dif = Inventario::getItem(nome).getQuantidade() - quantidade;
 
     if(dif < 0){
+        Interface::limparTela();
+        std::cout << RED << "" ;
         Interface::exibirMensagem("ERRO: Retirada nao realizada, estoque insuficiente de itens.");
-    } else {
-        if(dif == 0){
-          Interface::exibirMensagem("Atencao!! Todas as unidades foram retiradas");
+        std::cout << RESET << "" ;
+    } else if(dif == 0){
+            Interface::limparTela();
+            std::cout << MAGENTA << "" ;
+            Interface::exibirMensagem("Atencao!! Todas as unidades foram retiradas");
+            std::cout << RESET << "" ;
+    } else{
+            Inventario::getItem(nome).setQuantidade(dif);
+            Interface::limparTela();
+            std::cout << GREEN << "" ;
+            std::cout << quantidade << " " << nome << " ";
+            Interface::exibirMensagem("retirados.");
+            std::cout << RESET << "" ;
+            Inventario::adicionarMovimentacao(nome, "saida", quantidade);
         }
-        Inventario::getItem(nome).setQuantidade(dif);
-        Interface::exibirMensagem("itens retirados.");
-        Inventario::adicionarMovimentacao(nome, "saida", quantidade);
-    }
   } else {
+    Interface::limparTela();
+    std::cout << RED << "" ;
     Interface::exibirMensagem("O item nao existe no inventario");
-  }
+    std::cout << RESET << "" ;
+  }    
 }
 
 void Inventario::adicionarMovimentacao(const std::string& nome, std::string tipo, int quantidade) {

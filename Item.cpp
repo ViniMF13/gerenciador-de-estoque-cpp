@@ -7,6 +7,15 @@
 #include <iostream>
 #include <string>
 
+#define RESET   "\033[0m"
+#define RED     "\033[31m"
+#define GREEN   "\033[32m"
+#define YELLOW  "\033[33m"
+#define BLUE    "\033[34m"
+#define MAGENTA "\033[35m"
+#define CYAN    "\033[36m"
+
+
 // Construtor padrão
 Item::Item(const std::string& nome, double valor) {
     try {
@@ -91,22 +100,32 @@ void Item::setQuantidade(int quantidade){
 
 void Item::cadastrarItem(Inventario& inventario){
     try {
+        Interface::limparTela();
         std::string nome = Interface::lerValor<std::string>("Digite o nome do item que deseja cadastrar:");
         
         // Verifica se já existe um item com o mesmo nome no inventário antes de adicionar
         if(inventario.itemExiste(nome)){
             // Se o Item existe
-            Interface::exibirMensagem("Erro: O Item já está cadastrado no sistema");
+            std::cout << RED << "";
+            Interface::limparTela();
+            Interface::exibirMensagem("Erro: O Item ja esta cadastrado no sistema");
+            std::cout << RESET << "" ;
         } else {
             double valor = -1;
             while(valor < 0){ 
                 valor = Interface::lerValor<double>("Digite o valor do item");
-                if(valor < 0)
+                if(valor < 0){
+                    std::cout << RED << "";
                     Interface::exibirMensagem("Valor invalido");
+                    std::cout << RESET << "" ;
+                }
             }
             Item newItem = Item(nome, valor);
             inventario.obterEstoque().insert(std::make_pair(newItem.getId(), newItem));
-            Interface::exibirMensagem("O item foi cadastrado no inventário!");
+            Interface::limparTela();
+            std::cout << GREEN << "" ;
+            Interface::exibirMensagem("O item foi cadastrado no inventario!");
+            std::cout << RESET << "" ;
         }
     } catch (const std::exception& e) {
         // Tratar exceções relacionadas à entrada do usuário
@@ -116,6 +135,7 @@ void Item::cadastrarItem(Inventario& inventario){
 
 void Item::removerItem(Inventario& inventario){
     try {
+        Interface::limparTela();
         std::string nome = Interface::lerValor<std::string>("Digite o nome do item que deseja remover");
 
         // Verifica se já existe o item no inventário
@@ -124,10 +144,15 @@ void Item::removerItem(Inventario& inventario){
             Item& item = inventario.getItem(nome);
             auto it = inventario.obterEstoque().find(item.getId());
             inventario.obterEstoque().erase(it);
-            
+            Interface::limparTela();
+            std::cout << GREEN << "" ;
             Interface::exibirMensagem("O item foi Removido do inventário!");
+            std::cout << RESET << "" ;
         } else {
-            Interface::exibirMensagem("Erro: O item não está cadastrado no inventário.");
+            Interface::limparTela();
+            std::cout << RED << "" ;
+            Interface::exibirMensagem("Erro: O item nao esta cadastrado no inventario.");
+            std::cout << RESET << "" ;
         }
     } catch (const std::exception& e) {
         // Tratar exceções relacionadas à entrada do usuário
@@ -145,14 +170,23 @@ void Item::atualizarValor(Inventario& inventario){
             double novoValor = -1;
             while(novoValor < 0){
                 novoValor= Interface::lerValor<double>("Digite o novo valor do item:");
-                if(novoValor<0)
+                if(novoValor<0){
+                    std::cout << RED << "" ;
                     Interface::exibirMensagem("Valor invalido. ");
+                    std::cout << RESET << "" ;
+                }
             }
             inventario.getItem(nome).setValor(novoValor);
+            Interface::limparTela();
+            std::cout << GREEN << "" ;
             Interface::exibirMensagem("O valor do item foi atualizado");
+            std::cout << RESET << "" ;
         } else {
             // Se o Item não existe
-            Interface::exibirMensagem("O item não está cadastrado no inventário");
+            Interface::limparTela();
+            std::cout << RED << "" ;
+            Interface::exibirMensagem("O item nao esta cadastrado no inventario.");
+            std::cout << RESET << "" ;
         }
     } catch (const std::exception& e) {
         // Tratar exceções relacionadas à entrada do usuário
