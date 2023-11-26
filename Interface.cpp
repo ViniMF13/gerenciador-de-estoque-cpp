@@ -1,6 +1,7 @@
 // Interface.cpp
 #include "Interface.hpp"
 #include <chrono>
+#include <type_traits>
 #include <iostream>
 #include <map>
 
@@ -32,7 +33,7 @@ void Interface::exibirMensagem(const std::string& mensagem) {
 void Interface::exibirItens(Inventario& inventario) {
     std::cout << "Itens no inventário: " << std::endl;
     for (auto& par : inventario.obterEstoque()) {
-        std::cout << "ID " << par.first << "Nome " << par.second.getNome() << " Valor " << par.second.getValor() << " Quantidade " << par.second.getQuantidade() << std::endl;
+        std::cout << "ID " << par.first << " Nome " << par.second.getNome() << " Valor " << par.second.getValor() << " Quantidade " << par.second.getQuantidade() << std::endl;
     }
 }
 
@@ -62,11 +63,50 @@ void Interface::limparTela() {
     #endif
 }
 
+std::string Interface::lerNome(const std::string& mensagem) {
+    std::string nome;
+
+    // Imprime o prompt
+    std::cout << mensagem << ": ";
+
+    // Lê toda a linha, incluindo espaços
+    std::getline(std::cin, nome);
+    // Verifica se a entrada está vazia
+    while (nome.empty()) {
+        std::cout << "Entrada inválida. Tente novamente: ";
+        std::getline(std::cin, nome);
+    }
+
+    return nome;
+}
+
 // Função genérica para ler um valor do usuário
 template <typename T>
-T Interface::lerValor(const std::string& mensagem) {
+T Interface::requisitarInfo(const std::string& mensagem) {
+
     T valor;
+    std::string input;
+
+    // Imprime o prompt
     std::cout << mensagem << ": ";
-    std::cin >> valor;
+
+    // Lê toda a linha, incluindo espaços
+    std::getline(std::cin, input);
+
+    // Utiliza um stringstream para converter a string para o tipo T
+    std::stringstream stream(input);
+    stream >> std::ws >> valor;  // Ignora espaços em branco no início
+
+    // Verifica se a leitura foi bem-sucedida
+    while (stream.fail() || !stream.eof()) {
+        std::cout << "Entrada invalida. Aperte 'Enter' para tentar novamente: ";
+        std::cin.clear();
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        std::getline(std::cin, input);
+        stream.clear();
+        stream.str(input);
+        stream >> std::ws >> valor;
+    }
+
     return valor;
 }

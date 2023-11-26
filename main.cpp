@@ -13,7 +13,7 @@ int main() {
 
         Interface::exibirMenu();
         // Leitura da escolha do usuário
-        int n = Interface::lerValor<int>("Opssaum");
+        int n = Interface::requisitarInfo<int>("Opssaum");
 
         if (n == 1) {
             Item::cadastrarItem(meuInventario);
