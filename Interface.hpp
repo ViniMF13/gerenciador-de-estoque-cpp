@@ -15,8 +15,10 @@ public:
     static void exibirItens(Inventario& inventario);
     static void exibirHistorico(const Inventario& inventario);
 
+    static std::string lerNome(const std::string& mensagem);
+
     template <typename T>
-    static T lerValor(const std::string& mensagem);
+    static T requisitarInfo(const std::string& mensagem);
 };
 
 

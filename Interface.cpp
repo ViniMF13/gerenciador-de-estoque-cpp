@@ -1,6 +1,7 @@
 // Interface.cpp
 #include "Interface.hpp"
 #include <chrono>
+#include <type_traits>
 #include <iostream>
 #include <map>
 
@@ -32,7 +33,7 @@ void Interface::exibirMensagem(const std::string& mensagem) {
 void Interface::exibirItens(Inventario& inventario) {
     std::cout << "Itens no inventário: " << std::endl;
     for (auto& par : inventario.obterEstoque()) {
-        std::cout << "ID " << par.first << "Nome " << par.second.getNome() << " Valor " << par.second.getValor() << " Quantidade " << par.second.getQuantidade() << std::endl;
+        std::cout << "ID " << par.first << " Nome " << par.second.getNome() << " Valor " << par.second.getValor() << " Quantidade " << par.second.getQuantidade() << std::endl;
     }
 }
 
@@ -62,10 +63,29 @@ void Interface::limparTela() {
     #endif
 }
 
+std::string Interface::lerNome(const std::string& mensagem) {
+    std::string nome;
+
+    // Imprime o prompt
+    std::cout << mensagem << ": ";
+
+    // Lê toda a linha, incluindo espaços
+    std::getline(std::cin, nome);
+    // Verifica se a entrada está vazia
+    while (nome.empty()) {
+        std::cout << "Entrada inválida. Tente novamente: ";
+        std::getline(std::cin, nome);
+    }
+
+    return nome;
+}
+
 // Função genérica para ler um valor do usuário
 template <typename T>
-T Interface::lerValor(const std::string& mensagem) {
+T Interface::requisitarInfo(const std::string& mensagem) {
+
     T valor;
+  
     do {
             std::cout << mensagem << ": ";
 
@@ -80,3 +100,4 @@ T Interface::lerValor(const std::string& mensagem) {
 
         return valor;
 }
+

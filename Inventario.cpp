@@ -35,17 +35,19 @@ Item& Inventario::getItem(std::string& nome){
 }
 
 void Inventario::adicionarItens(){
-  std::string nome = Interface::lerValor<std::string>("Digite o nome do item que deseja adicionar");
+  std::string nome = Interface::requisitarInfo<std::string>("Digite o nome do item que deseja adicionar");
 
   // Verifica se o item está no inventário -------= = = = = = 
   if (Inventario::itemExiste(nome)) {
     // se o item está no inventário -------= = = = = = 
+
     int quantidade = -1;
     while(quantidade < 0){
         quantidade = Interface::lerValor<int>("Digite a quantidade de itens");    
         if(quantidade < 0)
             Interface::exibirMensagem("Valor invalido. ");
     }
+
 
     int qtd = Inventario::getItem(nome).getQuantidade();
     
@@ -63,7 +65,7 @@ void Inventario::adicionarItens(){
 }
 
 void Inventario::retirarItens(){
-  std::string nome = Interface::lerValor<std::string>("Digite o nome do item que deseja retirar");
+  std::string nome = Interface::requisitarInfo<std::string>("Digite o nome do item que deseja retirar");
 
   // Verifica se o item está no inventário -------= = = = = = 
   if (Inventario::itemExiste(nome)) {
@@ -74,6 +76,7 @@ void Inventario::retirarItens(){
         if(quantidade < 0)
             Interface::exibirMensagem("Valor invalido. ");
     } 
+
     
     int dif = Inventario::getItem(nome).getQuantidade() - quantidade;
 

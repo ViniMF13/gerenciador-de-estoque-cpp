@@ -91,19 +91,21 @@ void Item::setQuantidade(int quantidade){
 
 void Item::cadastrarItem(Inventario& inventario){
     try {
-        std::string nome = Interface::lerValor<std::string>("Digite o nome do item que deseja cadastrar:");
+        std::string nome = Interface::lerNome("digite o nome do item que deseja cadastrar");
         
         // Verifica se já existe um item com o mesmo nome no inventário antes de adicionar
         if(inventario.itemExiste(nome)){
             // Se o Item existe
             Interface::exibirMensagem("Erro: O Item já está cadastrado no sistema");
         } else {
+
             double valor = -1;
             while(valor < 0){ 
                 valor = Interface::lerValor<double>("Digite o valor do item");
                 if(valor < 0)
                     Interface::exibirMensagem("Valor invalido");
             }
+
             Item newItem = Item(nome, valor);
             inventario.obterEstoque().insert(std::make_pair(newItem.getId(), newItem));
             Interface::exibirMensagem("O item foi cadastrado no inventário!");
@@ -116,7 +118,7 @@ void Item::cadastrarItem(Inventario& inventario){
 
 void Item::removerItem(Inventario& inventario){
     try {
-        std::string nome = Interface::lerValor<std::string>("Digite o nome do item que deseja remover");
+        std::string nome = Interface::requisitarInfo<std::string>("Digite o nome do item que deseja remover");
 
         // Verifica se já existe o item no inventário
         if (inventario.itemExiste(nome)) {
@@ -137,17 +139,19 @@ void Item::removerItem(Inventario& inventario){
 
 void Item::atualizarValor(Inventario& inventario){
     try {
-        std::string nome = Interface::lerValor<std::string>("Digite o nome do item");
+        std::string nome = Interface::requisitarInfo<std::string>("Digite o nome do item");
 
         // Verifica se já existe o item no inventário
         if (inventario.itemExiste(nome)) {
             // Se o Item existe
+
             double novoValor = -1;
             while(novoValor < 0){
                 novoValor= Interface::lerValor<double>("Digite o novo valor do item:");
                 if(novoValor<0)
                     Interface::exibirMensagem("Valor invalido. ");
             }
+
             inventario.getItem(nome).setValor(novoValor);
             Interface::exibirMensagem("O valor do item foi atualizado");
         } else {
