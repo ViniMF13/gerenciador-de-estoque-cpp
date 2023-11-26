@@ -40,7 +40,14 @@ void Inventario::adicionarItens(){
   // Verifica se o item está no inventário -------= = = = = = 
   if (Inventario::itemExiste(nome)) {
     // se o item está no inventário -------= = = = = = 
-    int quantidade = Interface::requisitarInfo<int>("Digite a quantidade de itens");    
+
+    int quantidade = -1;
+    while(quantidade < 0){
+        quantidade = Interface::lerValor<int>("Digite a quantidade de itens");    
+        if(quantidade < 0)
+            Interface::exibirMensagem("Valor invalido. ");
+    }
+
 
     int qtd = Inventario::getItem(nome).getQuantidade();
     
@@ -63,7 +70,13 @@ void Inventario::retirarItens(){
   // Verifica se o item está no inventário -------= = = = = = 
   if (Inventario::itemExiste(nome)) {
   //se o item está no inventário -------= = = = = = 
-    int quantidade = Interface::requisitarInfo<int>("Digite a quantidade de itens"); 
+    int quantidade = -1;
+    while(quantidade < 0){
+        quantidade = Interface::lerValor<int>("Digite a quantidade de itens");    
+        if(quantidade < 0)
+            Interface::exibirMensagem("Valor invalido. ");
+    } 
+
     
     int dif = Inventario::getItem(nome).getQuantidade() - quantidade;
 

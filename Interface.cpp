@@ -85,28 +85,19 @@ template <typename T>
 T Interface::requisitarInfo(const std::string& mensagem) {
 
     T valor;
-    std::string input;
+  
+    do {
+            std::cout << mensagem << ": ";
 
-    // Imprime o prompt
-    std::cout << mensagem << ": ";
+            // Verifica se o próximo input é do tipo correto
+            while (!(std::cin >> valor) || std::cin.peek() != '\n') {
+                std::cin.clear(); // Limpa o estado de erro
+                std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Ignora o restante da linha inválida
+                std::cout << "Entrada inválida. Tente novamente: ";
+            }
 
-    // Lê toda a linha, incluindo espaços
-    std::getline(std::cin, input);
+        } while (false); // Substitua false por uma condição que indica quando parar o loop
 
-    // Utiliza um stringstream para converter a string para o tipo T
-    std::stringstream stream(input);
-    stream >> std::ws >> valor;  // Ignora espaços em branco no início
-
-    // Verifica se a leitura foi bem-sucedida
-    while (stream.fail() || !stream.eof()) {
-        std::cout << "Entrada invalida. Aperte 'Enter' para tentar novamente: ";
-        std::cin.clear();
-        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-        std::getline(std::cin, input);
-        stream.clear();
-        stream.str(input);
-        stream >> std::ws >> valor;
-    }
-
-    return valor;
+        return valor;
 }
+
