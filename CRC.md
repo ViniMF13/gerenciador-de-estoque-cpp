@@ -25,5 +25,12 @@ Exibir em tela uma lista em ordem alfabética de todos os itens do inventário
 
 Colab: item, Inventario
 
+Classe: Interface
 
-Colab: item, Inventario
+Responsável por interagir com o usuário e apresentar informações no console.
+Exibir o menu de opções	
+Limpar a tela do console 
+Ler informações (como nomes e valores) do usuário
+Exibir o histórico de movimentação	
+
+colab: Inventario
