@@ -98,8 +98,12 @@ void Item::cadastrarItem(Inventario& inventario){
             // Se o Item existe
             Interface::exibirMensagem("Erro: O Item já está cadastrado no sistema");
         } else {
-            double valor = Interface::lerValor<double>("Digite o valor do item:");
-
+            double valor = -1;
+            while(valor < 0){ 
+                valor = Interface::lerValor<double>("Digite o valor do item");
+                if(valor < 0)
+                    Interface::exibirMensagem("Valor invalido");
+            }
             Item newItem = Item(nome, valor);
             inventario.obterEstoque().insert(std::make_pair(newItem.getId(), newItem));
             Interface::exibirMensagem("O item foi cadastrado no inventário!");
