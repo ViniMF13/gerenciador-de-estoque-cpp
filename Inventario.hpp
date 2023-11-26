@@ -26,13 +26,13 @@ public:
   ///
   void retirarItens();
 
-  double calcularValorTotal();
-
   void adicionarMovimentacao(const std::string& nome, std::string tipo, int quantidade);
 
   void salvarDados(const std::string& nomeArquivo1, const std::string& nomeArquivo2);
 
   void carregarDados(const std::string& nomeArquivo1, const std::string& nomeArquivo2);
+
+  double calcularValorTotal() const;
   
   /// @brief retorna o inventário
   ///

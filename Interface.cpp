@@ -55,6 +55,13 @@ void Interface::exibirHistorico(const Inventario& inventario) {
     }
 }
 
+void verValorTotal(const Inventario& inventario){
+
+    double total = inventario.calcularValorTotal();
+    std::cout << "O valor total dos Itens no estoque é: " << total << "R$ " << std::endl;
+    
+}
+
 void Interface::limparTela() {
     #ifdef _WIN32
         system("cls"); // Comando para limpar tela no Windows
