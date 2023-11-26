@@ -53,7 +53,7 @@ void Inventario::adicionarItens(){
     int quantidade = -1;
     while(quantidade < 0){
 
-        quantidade = Interface::lerValor<int>("Digite a quantidade de itens");    
+        quantidade = Interface::requisitarInfo<int>("Digite a quantidade de itens");    
         if(quantidade < 0){
             std::cout << RED << "" ;
             Interface::exibirMensagem("Valor invalido. ");
@@ -91,7 +91,7 @@ void Inventario::retirarItens(){
     int quantidade = -1;
     while(quantidade < 0){
 
-        quantidade = Interface::lerValor<int>("Digite a quantidade de itens");    
+        quantidade = Interface::requisitarInfo<int>("Digite a quantidade de itens");    
         if(quantidade < 0){
             std::cout << RED << "" ;
             Interface::exibirMensagem("Valor invalido. ");

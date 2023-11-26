@@ -14,7 +14,7 @@ int main() {
         Interface::exibirMenu();
         // Leitura da escolha do usuário
 
-        int n = Interface::lerValor<int>("Opcao");
+        int n = Interface::requisitarInfo<int>("Opcao");
 
 
         if (n == 1) {

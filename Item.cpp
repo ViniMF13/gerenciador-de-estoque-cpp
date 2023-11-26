@@ -102,7 +102,7 @@ void Item::cadastrarItem(Inventario& inventario){
     try {
 
         Interface::limparTela();
-        std::string nome = Interface::lerValor<std::string>("Digite o nome do item que deseja cadastrar:");
+        std::string nome = Interface::requisitarInfo<std::string>("Digite o nome do item que deseja cadastrar:");
         
         // Verifica se já existe um item com o mesmo nome no inventário antes de adicionar
         if(inventario.itemExiste(nome)){
@@ -115,7 +115,7 @@ void Item::cadastrarItem(Inventario& inventario){
 
             double valor = -1;
             while(valor < 0){ 
-                valor = Interface::lerValor<double>("Digite o valor do item");
+                valor = Interface::requisitarInfo<double>("Digite o valor do item");
                 if(valor < 0){
                     std::cout << RED << "";
 
@@ -141,7 +141,7 @@ void Item::removerItem(Inventario& inventario){
     try {
 
         Interface::limparTela();
-        std::string nome = Interface::lerValor<std::string>("Digite o nome do item que deseja remover");
+        std::string nome = Interface::requisitarInfo<std::string>("Digite o nome do item que deseja remover");
 
 
         // Verifica se já existe o item no inventário
@@ -177,7 +177,7 @@ void Item::atualizarValor(Inventario& inventario){
             double novoValor = -1;
             while(novoValor < 0){
 
-                novoValor= Interface::lerValor<double>("Digite o novo valor do item:");
+                novoValor= Interface::requisitarInfo<double>("Digite o novo valor do item:");
                 if(novoValor<0){
                     std::cout << RED << "" ;
 
