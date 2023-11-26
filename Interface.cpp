@@ -16,14 +16,15 @@ void Interface::exibirMenu() {
             std::cout << "4: Adicionar itens" << std::endl;
             std::cout << "5: Retiradr itens" << std::endl;
             std::cout << "6: Listar itens" << std::endl;
-            std::cout << "7: Ver Historico de movimentacao" << std::endl;
+            std::cout << "7: ver Valor Total" << std::endl;
+            std::cout << "8: Ver Historico de movimentacao" << std::endl;
         //Historicos
         //  std::cout << ": histórico de entradas" << std::endl;
         //  std::cout << ": Histórico de saidas" << std::endl;
         //Configurações
         //  std::cout << ": Idioma" << std::endl;
         //  std::cout << ": Moeda" << std::endl;
-        std::cout << "10: Slavar e Sair" << std::endl;
+        std::cout << "9: Slavar e Sair" << std::endl;
 }
 
 void Interface::exibirMensagem(const std::string& mensagem) {
@@ -55,10 +56,10 @@ void Interface::exibirHistorico(const Inventario& inventario) {
     }
 }
 
-void verValorTotal(const Inventario& inventario){
+void Interface::verValorTotal(const Inventario& inventario){
 
     double total = inventario.calcularValorTotal();
-    std::cout << "O valor total dos Itens no estoque é: " << total << "R$ " << std::endl;
+    std::cout << "Valor total dos Itens no estoque: " << total << "R$ " << std::endl;
     
 }
 
