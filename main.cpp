@@ -35,8 +35,11 @@ int main() {
             Interface::exibirItens(meuInventario);
         } else if (n == 7) {
             // 
+            Interface::verValorTotal(meuInventario);
+        } else if (n == 8) {
+            // 
             Interface::exibirHistorico(meuInventario);
-        } else if (n == 8){
+        } else if (n == 9){
             meuInventario.salvarDados("Inventario.json", "Historico.json"); 
             break;  // Sai do loop para encerrar o programa
         } else {
