@@ -10,6 +10,13 @@ class Item;
 
 class Inventario {
 public:
+  /// @brief verifica se o item existe no inventário
+  ///
+  bool itemExiste(std::string& nome);
+
+  /// @brief retorna um item presente no inventario
+  ///
+  Item& getItem(std::string& nome);
 
   /// @brief Adiciona uma quantiade de itens ao estoque
   ///
@@ -19,13 +26,7 @@ public:
   ///
   void retirarItens();
 
-  /// @brief verifica se o item existe no inventário
-  ///
-  bool itemExiste(std::string& nome);
-
-  /// @brief retorna um item presente no inventario
-  ///
-  Item& getItem(std::string& nome);
+  double calcularValorTotal();
 
   void adicionarMovimentacao(const std::string& nome, std::string tipo, int quantidade);
 

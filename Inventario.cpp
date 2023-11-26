@@ -43,7 +43,7 @@ void Inventario::adicionarItens(){
 
     int quantidade = -1;
     while(quantidade < 0){
-        quantidade = Interface::lerValor<int>("Digite a quantidade de itens");    
+        quantidade = Interface::requisitarInfo<int>("Digite a quantidade de itens");    
         if(quantidade < 0)
             Interface::exibirMensagem("Valor invalido. ");
     }
@@ -72,7 +72,7 @@ void Inventario::retirarItens(){
   //se o item está no inventário -------= = = = = = 
     int quantidade = -1;
     while(quantidade < 0){
-        quantidade = Interface::lerValor<int>("Digite a quantidade de itens");    
+        quantidade = Interface::requisitarInfo<int>("Digite a quantidade de itens");    
         if(quantidade < 0)
             Interface::exibirMensagem("Valor invalido. ");
     } 
@@ -93,6 +93,35 @@ void Inventario::retirarItens(){
   } else {
     Interface::exibirMensagem("O item nao existe no inventario");
   }
+}
+
+double Inventario::calcularValorTotal(){
+    double total;
+    try {
+        // Itera sobre cada par (id do item, objeto Item) no inventário
+        for (const auto& par : estoque) {
+            const Item& item = par.second;
+
+            // Verifica se o valor do item é válido (não é negativo)
+            if (item.getValor() < 0.0) {
+                throw std::invalid_argument("Valor do item não pode ser negativo.");
+            }
+
+            // Verifica se a quantidade do item é válida (não é negativa)
+            if (item.getQuantidade() < 0) {
+                throw std::invalid_argument("Quantidade do item não pode ser negativa.");
+            }
+
+            // Calcula o valor total para o item e soma ao total geral
+            total += (item.getValor() * item.getQuantidade());
+        }
+
+        return total;
+    } catch (const std::exception& e) {
+        // Captura exceções padrão do C++ e imprime a mensagem de erro
+        std::cerr << "Erro ao calcular o valor total: " << e.what() << std::endl;
+        return -1.0; // Retorna um valor inválido para indicar erro
+    }
 }
 
 void Inventario::adicionarMovimentacao(const std::string& nome, std::string tipo, int quantidade) {

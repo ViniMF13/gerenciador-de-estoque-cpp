@@ -101,7 +101,7 @@ void Item::cadastrarItem(Inventario& inventario){
 
             double valor = -1;
             while(valor < 0){ 
-                valor = Interface::lerValor<double>("Digite o valor do item");
+                valor = Interface::requisitarInfo<double>("Digite o valor do item");
                 if(valor < 0)
                     Interface::exibirMensagem("Valor invalido");
             }
@@ -147,7 +147,7 @@ void Item::atualizarValor(Inventario& inventario){
 
             double novoValor = -1;
             while(novoValor < 0){
-                novoValor= Interface::lerValor<double>("Digite o novo valor do item:");
+                novoValor= Interface::requisitarInfo<double>("Digite o novo valor do item:");
                 if(novoValor<0)
                     Interface::exibirMensagem("Valor invalido. ");
             }
