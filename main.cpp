@@ -8,12 +8,14 @@
 int main() {
     Inventario meuInventario;
     meuInventario.carregarDados("Inventario.json", "Historico.json");
-    
+    Interface::limparTela();
     while (true) {
-
+        Interface::exibirMensagem("\n");
         Interface::exibirMenu();
         // Leitura da escolha do usuário
-        int n = Interface::requisitarInfo<int>("Opssaum");
+
+        int n = Interface::lerValor<int>("Opcao");
+
 
         if (n == 1) {
             Item::cadastrarItem(meuInventario);
@@ -23,21 +25,28 @@ int main() {
             Item::removerItem(meuInventario);
         } else if (n == 3) {
             // artualizarvalor itens ao inventario
+            Interface::limparTela();
             Item::atualizarValor(meuInventario);
         } else if (n == 4) {
             // Adicionar itens ao inventario
+            Interface::limparTela();
             meuInventario.adicionarItens();
         } else if (n == 5) {
             // Retirar itens do inventário
+            Interface::limparTela();
             meuInventario.retirarItens();
         } else if (n == 6) {
             // Listar Itens
+            Interface::limparTela();
             Interface::exibirItens(meuInventario);
         } else if (n == 7) {
             // 
+            Interface::limparTela();
             Interface::verValorTotal(meuInventario);
+
         } else if (n == 8) {
             // 
+            Interface::limparTela();
             Interface::exibirHistorico(meuInventario);
         } else if (n == 9){
             meuInventario.salvarDados("Inventario.json", "Historico.json"); 
@@ -45,6 +54,7 @@ int main() {
         } else {
             Interface::exibirMensagem("Erro: Escolha invalida");
         }
+
     }
     return 0;
 }
