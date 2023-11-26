@@ -1,6 +1,7 @@
 // Interface.cpp
 #include "Interface.hpp"
 #include <chrono>
+#include <type_traits>
 #include <iostream>
 #include <map>
 
@@ -20,25 +21,21 @@ void Interface::exibirMenu() {
     std::cout << YELLOW << " =================================== " << std::endl;
         //Item
     std::cout << "|             | Itens |             |" << std::endl;
-    std::cout << "| 1 - Cadastrar novo item           |" << std::endl;
-    std::cout << "| 2 - Remover um item               |" << std::endl;
-    std::cout << "| 3 - Atualizar Valor do item       |" << std::endl;
+    std::cout << "| 1 - Cadastrar                     |" << std::endl;
+    std::cout << "| 2 - Remover                       |" << std::endl;
+    std::cout << "| 3 - Atualizar Valor               |" << std::endl;
     std::cout << " =================================== " << std::endl;
          //Inventário
     std::cout << "|           | Iventario |           |" << std::endl;
     std::cout << "| 4 - Adicionar itens               |" << std::endl;
-    std::cout << "| 5 - Retirar itens                |" << std::endl;
+    std::cout << "| 5 - Retirar itens                 |" << std::endl;
     std::cout << "| 6 - Listar itens                  |" << std::endl;
-    std::cout << "| 7 - Ver Historico de movimentacao |" << std::endl;
-        //Historicos
-        //  std::cout << ": histórico de entradas" << std::endl;
-        //  std::cout << ": Histórico de saidas" << std::endl;
-        //Configurações
-        //  std::cout << ": Idioma" << std::endl;
-        //  std::cout << ": Moeda" << std::endl;
-    std::cout << "| 10 - Salvar e Sair                |" << std::endl;
+    std::cout << "| 7 - Valor total                   |" << std::endl;
+    std::cout << "| 8 - Historico de movimentacao     |" << std::endl;
+    std::cout << "| 9 - Salvar e Sair                 |" << std::endl;
     std::cout << " =================================== " << RESET << std::endl;
     std::cout << std::endl;
+
 }
 
 void Interface::exibirMensagem(const std::string& mensagem) {
@@ -47,7 +44,7 @@ void Interface::exibirMensagem(const std::string& mensagem) {
 
 void Interface::exibirItens(Inventario& inventario) {
     std::cout << "Itens no inventário: " << std::endl;
-    std::cout << "ID" << "\t" << "NOME" << "\t" << "VALOR" << "\t" << "QUANTIDADE" << std::endl; 
+    std::cout << "ID" << "\t" << "Nome" << "\t" << "Valor" << "\t" << "Unidades" << std::endl; 
     for (auto& par : inventario.obterEstoque()) {
         std::cout << par.first << "\t" << par.second.getNome() << "\t" << par.second.getValor() << " \t" << par.second.getQuantidade() << std::endl;
     }
@@ -72,6 +69,13 @@ void Interface::exibirHistorico(const Inventario& inventario) {
     }
 }
 
+void Interface::verValorTotal(const Inventario& inventario){
+
+    double total = inventario.calcularValorTotal();
+    std::cout << "Valor total dos Itens no estoque: " << total << "R$ " << std::endl;
+    
+}
+
 void Interface::limparTela() {
     #ifdef _WIN32
         system("cls"); // Comando para limpar tela no Windows
@@ -80,10 +84,29 @@ void Interface::limparTela() {
     #endif
 }
 
+std::string Interface::lerNome(const std::string& mensagem) {
+    std::string nome;
+
+    // Imprime o prompt
+    std::cout << mensagem << ": ";
+
+    // Lê toda a linha, incluindo espaços
+    std::getline(std::cin, nome);
+    // Verifica se a entrada está vazia
+    while (nome.empty()) {
+        std::cout << "Entrada inválida. Tente novamente: ";
+        std::getline(std::cin, nome);
+    }
+
+    return nome;
+}
+
 // Função genérica para ler um valor do usuário
 template <typename T>
-T Interface::lerValor(const std::string& mensagem) {
+T Interface::requisitarInfo(const std::string& mensagem) {
+
     T valor;
+  
     do {
             std::cout << mensagem << ": ";
 
@@ -98,3 +121,4 @@ T Interface::lerValor(const std::string& mensagem) {
 
         return valor;
 }
+

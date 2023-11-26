@@ -44,13 +44,15 @@ Item& Inventario::getItem(std::string& nome){
 }
 
 void Inventario::adicionarItens(){
-  std::string nome = Interface::lerValor<std::string>("Digite o nome do item que deseja adicionar");
+  std::string nome = Interface::requisitarInfo<std::string>("Digite o nome do item que deseja adicionar");
 
   // Verifica se o item está no inventário -------= = = = = = 
   if (Inventario::itemExiste(nome)) {
     // se o item está no inventário -------= = = = = = 
+
     int quantidade = -1;
     while(quantidade < 0){
+
         quantidade = Interface::lerValor<int>("Digite a quantidade de itens");    
         if(quantidade < 0){
             std::cout << RED << "" ;
@@ -58,6 +60,7 @@ void Inventario::adicionarItens(){
             std::cout << RESET << "" ;
         }
     }
+
 
     int qtd = Inventario::getItem(nome).getQuantidade();
     
@@ -80,13 +83,14 @@ void Inventario::adicionarItens(){
 }
 
 void Inventario::retirarItens(){
-  std::string nome = Interface::lerValor<std::string>("Digite o nome do item que deseja retirar");
+  std::string nome = Interface::requisitarInfo<std::string>("Digite o nome do item que deseja retirar");
 
   // Verifica se o item está no inventário -------= = = = = = 
   if (Inventario::itemExiste(nome)) {
     //se o item está no inventário -------= = = = = = 
     int quantidade = -1;
     while(quantidade < 0){
+
         quantidade = Interface::lerValor<int>("Digite a quantidade de itens");    
         if(quantidade < 0){
             std::cout << RED << "" ;
@@ -94,6 +98,7 @@ void Inventario::retirarItens(){
             std::cout << RESET << "" ;
         }
     } 
+
     
     int dif = Inventario::getItem(nome).getQuantidade() - quantidade;
 
@@ -228,6 +233,35 @@ void Inventario::carregarDados(const std::string& nomeArquivo1, const std::strin
   } catch (const std::exception& e) {
       std::cerr << "Erro ao carregar dados: " << e.what() << std::endl;
   }
+}
+
+double Inventario::calcularValorTotal() const {
+    double total;
+    try {
+        // Itera sobre cada par (id do item, objeto Item) no inventário
+        for (const auto& par : estoque) {
+            const Item& item = par.second;
+
+            // Verifica se o valor do item é válido (não é negativo)
+            if (item.getValor() < 0.0) {
+                throw std::invalid_argument("Valor do item não pode ser negativo.");
+            }
+
+            // Verifica se a quantidade do item é válida (não é negativa)
+            if (item.getQuantidade() < 0) {
+                throw std::invalid_argument("Quantidade do item não pode ser negativa.");
+            }
+
+            // Calcula o valor total para o item e soma ao total geral
+            total += (item.getValor() * item.getQuantidade());
+        }
+
+        return total;
+    } catch (const std::exception& e) {
+        // Captura exceções padrão do C++ e imprime a mensagem de erro
+        std::cerr << "Erro ao calcular o valor total: " << e.what() << std::endl;
+        return -1.0; // Retorna um valor inválido para indicar erro
+    }
 }
 
 std::map<int, Item>& Inventario::obterEstoque() {

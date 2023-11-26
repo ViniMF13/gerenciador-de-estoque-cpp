@@ -13,6 +13,7 @@ int main() {
         Interface::exibirMensagem("\n");
         Interface::exibirMenu();
         // Leitura da escolha do usuário
+
         int n = Interface::lerValor<int>("Opcao");
 
 
@@ -41,8 +42,13 @@ int main() {
         } else if (n == 7) {
             // 
             Interface::limparTela();
+            Interface::verValorTotal(meuInventario);
+
+        } else if (n == 8) {
+            // 
+            Interface::limparTela();
             Interface::exibirHistorico(meuInventario);
-        } else if (n == 8){
+        } else if (n == 9){
             meuInventario.salvarDados("Inventario.json", "Historico.json"); 
             break;  // Sai do loop para encerrar o programa
         } else {

@@ -100,6 +100,7 @@ void Item::setQuantidade(int quantidade){
 
 void Item::cadastrarItem(Inventario& inventario){
     try {
+
         Interface::limparTela();
         std::string nome = Interface::lerValor<std::string>("Digite o nome do item que deseja cadastrar:");
         
@@ -111,15 +112,18 @@ void Item::cadastrarItem(Inventario& inventario){
             Interface::exibirMensagem("Erro: O Item ja esta cadastrado no sistema");
             std::cout << RESET << "" ;
         } else {
+
             double valor = -1;
             while(valor < 0){ 
                 valor = Interface::lerValor<double>("Digite o valor do item");
                 if(valor < 0){
                     std::cout << RED << "";
+
                     Interface::exibirMensagem("Valor invalido");
                     std::cout << RESET << "" ;
                 }
             }
+
             Item newItem = Item(nome, valor);
             inventario.obterEstoque().insert(std::make_pair(newItem.getId(), newItem));
             Interface::limparTela();
@@ -135,8 +139,10 @@ void Item::cadastrarItem(Inventario& inventario){
 
 void Item::removerItem(Inventario& inventario){
     try {
+
         Interface::limparTela();
         std::string nome = Interface::lerValor<std::string>("Digite o nome do item que deseja remover");
+
 
         // Verifica se já existe o item no inventário
         if (inventario.itemExiste(nome)) {
@@ -162,20 +168,24 @@ void Item::removerItem(Inventario& inventario){
 
 void Item::atualizarValor(Inventario& inventario){
     try {
-        std::string nome = Interface::lerValor<std::string>("Digite o nome do item");
+        std::string nome = Interface::requisitarInfo<std::string>("Digite o nome do item");
 
         // Verifica se já existe o item no inventário
         if (inventario.itemExiste(nome)) {
             // Se o Item existe
+
             double novoValor = -1;
             while(novoValor < 0){
+
                 novoValor= Interface::lerValor<double>("Digite o novo valor do item:");
                 if(novoValor<0){
                     std::cout << RED << "" ;
+
                     Interface::exibirMensagem("Valor invalido. ");
                     std::cout << RESET << "" ;
                 }
             }
+
             inventario.getItem(nome).setValor(novoValor);
             Interface::limparTela();
             std::cout << GREEN << "" ;
