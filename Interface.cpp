@@ -66,7 +66,17 @@ void Interface::limparTela() {
 template <typename T>
 T Interface::lerValor(const std::string& mensagem) {
     T valor;
-    std::cout << mensagem << ": ";
-    std::cin >> valor;
-    return valor;
+    do {
+            std::cout << mensagem << ": ";
+
+            // Verifica se o próximo input é do tipo correto
+            while (!(std::cin >> valor) || std::cin.peek() != '\n') {
+                std::cin.clear(); // Limpa o estado de erro
+                std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Ignora o restante da linha inválida
+                std::cout << "Entrada inválida. Tente novamente: ";
+            }
+
+        } while (false); // Substitua false por uma condição que indica quando parar o loop
+
+        return valor;
 }
