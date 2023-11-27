@@ -57,7 +57,7 @@ int main() {
             getchar();
             Interface::limparTela();
         } else if (n == 9){
-            meuInventario.salvarDados("Inventario.json", "Historico.json"); 
+            meuInventario.salvarDados("output/Inventario.json", "output/Historico.json"); 
             break;  // Sai do loop para encerrar o programa
         } else {
             Interface::exibirMensagem("Erro: Escolha invalida");
