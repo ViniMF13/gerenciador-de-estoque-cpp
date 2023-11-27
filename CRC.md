@@ -14,16 +14,11 @@ Adicionar novo item ao inventário após validação bem sucedida.
 Remover item do inventário após validação bem sucedida
 Editar itens do inventario.
 Tratar situações de erro, como tentativas de inserção de informações inválidas.
-
-Colab: item
-
-
-Classe: listarItens 
-
 buscar informações dos itens
 Exibir em tela uma lista em ordem alfabética de todos os itens do inventário
 
-Colab: item, Inventario
+Colab: item
+
 
 Classe: Interface
 
