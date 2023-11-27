@@ -52,6 +52,10 @@ int main() {
             // 
             Interface::limparTela();
             Interface::exibirHistorico(meuInventario);
+            Interface::exibirMensagem("\nPressione ENTER para fechar o Historico. ");
+            getchar();
+            getchar();
+            Interface::limparTela();
         } else if (n == 9){
             meuInventario.salvarDados("Inventario.json", "Historico.json"); 
             break;  // Sai do loop para encerrar o programa

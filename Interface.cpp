@@ -52,7 +52,7 @@ void Interface::exibirItens(Inventario& inventario) {
 
 void Interface::exibirHistorico(const Inventario& inventario) {
     for (const auto& mov : inventario.obterHistorico()) {
-         std::cout << "Nome: " << mov.getNome() << "Tipo: " << mov.getTipo() << ", Quantidade: " << mov.getQuantidade() << ", Data: ";
+        std::cout << "Nome: " << mov.getNome() << " | " << "Tipo: " << mov.getTipo() << " | " << "Quantidade: " << mov.getQuantidade() << " | " << "Data: ";
 
         // Cria uma cópia não constante de mov.getData()
         time_t data = mov.getData();
