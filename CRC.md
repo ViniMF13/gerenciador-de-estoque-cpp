@@ -29,3 +29,16 @@ Ler informações (como nomes e valores) do usuário
 Exibir o histórico de movimentação	
 
 colab: Inventario
+
+
+Classe: Movimentacao
+
+Armazenar informações sobre uma movimentação, incluindo nome, tipo, quantidade e data.
+Converter as informações da movimentação em formato JSON.
+Fornecer informações específicas da movimentação quando solicitado.
+Obter o nome da movimentação.
+Obter o tipo da movimentação.
+Obter a quantidade da movimentação.
+Obter a data da movimentação.
+
+Colab: Item , Inventario
