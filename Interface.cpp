@@ -48,6 +48,11 @@ void Interface::exibirItens(Inventario& inventario) {
     for (auto& par : inventario.obterEstoque()) {
         std::cout << par.first << "\t" << par.second.getNome() << "\t" << par.second.getValor() << " \t" << par.second.getQuantidade() << std::endl;
     }
+
+    Interface::exibirMensagem("\nPressione ENTER para fechar a lista. ");
+            getchar();
+            getchar();
+            Interface::limparTela();
 }
 
 void Interface::exibirHistorico(const Inventario& inventario) {
@@ -66,13 +71,23 @@ void Interface::exibirHistorico(const Inventario& inventario) {
             std::cout << "Erro na conversão de data e hora" << std::endl;
         }
     }
+
+    Interface::exibirMensagem("\nPressione ENTER para fechar o Historico. ");
+            getchar();
+            getchar();
+            Interface::limparTela();
 }
 
 void Interface::verValorTotal(const Inventario& inventario){
 
     double total = inventario.calcularValorTotal();
-    std::cout << "Valor total dos Itens no estoque: " << total << "R$ " << std::endl;
-    
+    std::cout << YELLOW << " ====================================" << std::endl;
+    std::cout << "|       Valor total :" << GREEN << " R$ " << total  << YELLOW << "      |"<< std::endl;
+    std::cout << " ====================================" << RESET << std::endl;
+    Interface::exibirMensagem("\nPressione ENTER para voltar ao menu. ");
+    getchar();
+    getchar();
+    Interface::limparTela();
 }
 
 void Interface::limparTela() {
