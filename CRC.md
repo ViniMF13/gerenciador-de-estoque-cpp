@@ -14,23 +14,31 @@ Adicionar novo item ao inventário após validação bem sucedida.
 Remover item do inventário após validação bem sucedida
 Editar itens do inventario.
 Tratar situações de erro, como tentativas de inserção de informações inválidas.
+buscar informações dos itens
+Exibir em tela uma lista em ordem alfabética de todos os itens do inventário
 
 Colab: item
 
 
-Classe: listarItens 
+Classe: Interface
 
-buscar informações dos itens
-Exibir em tela uma lista em ordem alfabética de todos os itens do inventário
+Responsável por interagir com o usuário e apresentar informações no console.
+Exibir o menu de opções	
+Limpar a tela do console 
+Ler informações (como nomes e valores) do usuário
+Exibir o histórico de movimentação	
 
-Colab: item, Inventario
+colab: Inventario
 
 
-Classe: valorToral 
+Classe: Movimentacao
 
-realizar o calculo do valor total multiplicando o valor de cada item pela quantidade de itens no inventário.
-exibir em tela o valor total do inventário em Reais, com formatação adequada.
-tratar situações de erro, como itens com preços inválidos ou quantidades negativas, de forma apropriada, garantindo a integridade dos cálculos.
-testar diferentes cenários, incluindo inventários com uma grande variedade de itens e preços.
+Armazenar informações sobre uma movimentação, incluindo nome, tipo, quantidade e data.
+Converter as informações da movimentação em formato JSON.
+Fornecer informações específicas da movimentação quando solicitado.
+Obter o nome da movimentação.
+Obter o tipo da movimentação.
+Obter a quantidade da movimentação.
+Obter a data da movimentação.
 
-Colab: item, Inventario
+Colab: Item , Inventario
