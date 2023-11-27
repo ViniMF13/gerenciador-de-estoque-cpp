@@ -10,7 +10,7 @@ int main() {
     meuInventario.carregarDados("Inventario.json", "Historico.json");
     Interface::limparTela();
     while (true) {
-        Interface::exibirMensagem("\n");
+        // Interface::exibirMensagem("\n");
         Interface::exibirMenu();
         // Leitura da escolha do usuário
 
@@ -39,6 +39,10 @@ int main() {
             // Listar Itens
             Interface::limparTela();
             Interface::exibirItens(meuInventario);
+            Interface::exibirMensagem("\nPressione ENTER para fechar a lista. ");
+            getchar();
+            getchar();
+            Interface::limparTela();
         } else if (n == 7) {
             // 
             Interface::limparTela();

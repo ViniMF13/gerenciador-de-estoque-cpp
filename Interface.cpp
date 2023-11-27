@@ -43,12 +43,11 @@ void Interface::exibirMensagem(const std::string& mensagem) {
 }
 
 void Interface::exibirItens(Inventario& inventario) {
-    std::cout << "Itens no inventário: " << std::endl;
-    std::cout << "ID" << "\t" << "Nome" << "\t" << "Valor" << "\t" << "Unidades" << std::endl; 
+    std::cout << "Itens no inventario: \n" << std::endl;
+    std::cout << BLUE << "ID" << "\t" << "Nome" << "\t" << "Valor" << "\t" << "Unidades" << std::endl << RESET; 
     for (auto& par : inventario.obterEstoque()) {
         std::cout << par.first << "\t" << par.second.getNome() << "\t" << par.second.getValor() << " \t" << par.second.getQuantidade() << std::endl;
     }
-
 }
 
 void Interface::exibirHistorico(const Inventario& inventario) {
