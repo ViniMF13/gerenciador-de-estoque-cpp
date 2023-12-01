@@ -1,11 +1,8 @@
 ﻿# gerenciador-de-estoque-cpp
-/* seguir os seguintes passos no readme 
--Titulo e descrição
+/* dependencias:
 -Tabela de conteúdos
--status do projeto
 -Features ( usar como base histórias)
 -Como rodar os testes
--Tecnologias
 -Autores
 */
 ## Descrição do Projeto
@@ -24,7 +21,7 @@ Um sistema eficiente de gestão de estoque que oferece controle detalhado e fác
 10. [Tecnologias Utilizadas](#tecnologias-utilizadas)
 11. [Status do Projeto](#status-do-projeto)
 
-##Cadastro de Novo Item no Estoque
+### Cadastro de Novo Item no Estoque
 Como usuário do sistema, você tem a capacidade de cadastrar um novo item no estoque, mantendo um registro atualizado de todos os itens disponíveis.
 
 **Instruções:**
@@ -34,7 +31,7 @@ Como usuário do sistema, você tem a capacidade de cadastrar um novo item no es
 4. Digite o valor do item
 5. O item foi cadastrado no inventario!
 
-#Remoção-de-item-do-inventário
+### Remoção de item do inventário
 Como usuário do sistema, você tem a capacidade de remover um item do inventário, garantindo o controle preciso dos itens existententes sejam realmente iguais com os itens que mantenho em estoque.
 
 **Instruções:**
@@ -43,7 +40,7 @@ Como usuário do sistema, você tem a capacidade de remover um item do inventár
 3. Digite o nome do item que deseja remover.
 4. O item foi Removido do inventario!
 
-##Atualização-do-valor-de-um-item
+### Atualização do valor de um item
 Como usuário do sistema, você tem a capacidade de atualizar o valor de um item, mantendo as informações precisas e atualizadas no sistema.
 
 **Instruções:**
@@ -54,7 +51,7 @@ Como usuário do sistema, você tem a capacidade de atualizar o valor de um item
 5. O valor do item foi autualizado.
 
 
-##Adição-de-itens-ao-estoque
+### Adição de itens ao estoque
 Como usuário do sistema, você pode adicionar uma quantidade de itens ao estoque, garantindo que o inventário esteja atualizado.
 
 **Instruções:**
@@ -64,7 +61,7 @@ Como usuário do sistema, você pode adicionar uma quantidade de itens ao estoqu
 4. Digite a quantidade de itens.
 5. A quantidade de itens foi atualizada.
 
-###Retirada-de-itens-do-estoque
+### Retirada de itens do estoque
 Como usuário do sistema, você pode retirar uma quantidade de itens do estoque mantendo o estoque atualizado e de acordo com o invetário.
 
 **Instruções:**
@@ -74,7 +71,7 @@ Como usuário do sistema, você pode retirar uma quantidade de itens do estoque 
 4. Digite a quantidade de itens.
 5. Itens retirados
 
-##Lista-de-itens-do-estoque
+### Lista de itens do estoque
 Como usuário do sistema, você consiguirá visualizar como está o estoque listando ele tendo uma visão rápida e clara da disponibilidade dos itens.
 
 **Instruções:**
@@ -83,7 +80,7 @@ Como usuário do sistema, você consiguirá visualizar como está o estoque list
 3. Itens listados.
 4. Pressione ENTER para fechar a lista.
 
-##Consultar-valor-total
+### Consultar valor total
 Como usuário do sistema, você consiguirá visualizar o valor total do seu estoque tendo assim mais controle sobre ele.
 
 **Instruções:**
@@ -91,16 +88,16 @@ Como usuário do sistema, você consiguirá visualizar o valor total do seu esto
 2. Digite a opção  7 - Valor total.
 3. Valro total do estoque.
 
-##Ver-movimentacoes-feitas-no-estoque
+### Ver movimentacoes feitas no estoque
 Como usuário do sistema, você consiguirá visualizar as movimentações feitas no estoque visão tendo um controle ainda maior sobre seu estoque.
 
 **Instruções:**
 1. Acesse a pagina principal do sistema.
-2. Digite a opção  8 - Historico de movimentacao.
+2. Digite a opção  8 - Histórico de movimentação.
 3. Movimentações feitas.
-4. Pressione ENTER para fechar o Historico.
+4. Pressione ENTER para fechar o Histórico.
 
-##Salvar-e-sair
+### Salvar e sair
 Como usuário do sistema, você consiguirá salvar as alterações feitas no estoque e sair do sistema.
 
 1. Acesse a pagina principal do sistema.
@@ -114,8 +111,8 @@ Para executar os comandos no terminal:
 - `make run` executa o main.exe gerado
 - `make rebuild` após fazer alguma alteração no código, esse comando vai apagar o main.exe, recompilar e executar o novo main.exe
 
+## Tecnologias utilizadas
 As seguintes ferramentas foram usadas na construção do projeto:
-
 - [C++](https://www.cplusplus.com/)
 
 ## Status do Projeto
