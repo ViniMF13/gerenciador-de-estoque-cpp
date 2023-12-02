@@ -130,7 +130,7 @@ T Interface::requisitarInfo(const std::string& mensagem) {
             while (!(std::cin >> valor) || std::cin.peek() != '\n') {
                 std::cin.clear(); // Limpa o estado de erro
                 std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Ignora o restante da linha inválida
-                std::cout << "Entrada inválida. Tente novamente: ";
+                std::cout << RED << "Entrada invalida. Tente novamente: " << RESET;
             }
 
         } while (false); // Substitua false por uma condição que indica quando parar o loop

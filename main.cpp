@@ -54,7 +54,10 @@ int main() {
             meuInventario.salvarDados("Inventario.json", "Historico.json"); 
             break;  // Sai do loop para encerrar o programa
         } else {
+            Interface::limparTela();
+            std::cout << RED ;
             Interface::exibirMensagem("Erro: Escolha invalida");
+            std::cout << RESET;
         }
 
     }
