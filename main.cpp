@@ -39,10 +39,7 @@ int main() {
             // Listar Itens
             Interface::limparTela();
             Interface::exibirItens(meuInventario);
-            Interface::exibirMensagem("\nPressione ENTER para fechar a lista. ");
-            getchar();
-            getchar();
-            Interface::limparTela();
+            
         } else if (n == 7) {
             // 
             Interface::limparTela();
@@ -52,15 +49,15 @@ int main() {
             // 
             Interface::limparTela();
             Interface::exibirHistorico(meuInventario);
-            Interface::exibirMensagem("\nPressione ENTER para fechar o Historico. ");
-            getchar();
-            getchar();
-            Interface::limparTela();
+            
         } else if (n == 9){
             meuInventario.salvarDados("output/Inventario.json", "output/Historico.json"); 
             break;  // Sai do loop para encerrar o programa
         } else {
+            Interface::limparTela();
+            std::cout << RED ;
             Interface::exibirMensagem("Erro: Escolha invalida");
+            std::cout << RESET;
         }
 
     }

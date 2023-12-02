@@ -43,16 +43,23 @@ void Interface::exibirMensagem(const std::string& mensagem) {
 }
 
 void Interface::exibirItens(Inventario& inventario) {
+    std::cout << std::fixed << std::setprecision(2);
     std::cout << "Itens no inventario: \n" << std::endl;
-    std::cout << BLUE << "ID" << "\t" << "Nome" << "\t" << "Valor" << "\t" << "Unidades" << std::endl << RESET; 
+    std::cout << BLUE << "ID" << "\t\t" << "Nome" << "\t\t" << "Valor" << "\t\t" << "Unidades" << std::endl << RESET; 
     for (auto& par : inventario.obterEstoque()) {
-        std::cout << par.first << "\t" << par.second.getNome() << "\t" << par.second.getValor() << " \t" << par.second.getQuantidade() << std::endl;
+        std::cout << par.first << "\t\t" << par.second.getNome() << "\t\t" << par.second.getValor() << "\t\t" << par.second.getQuantidade() << std::endl;
     }
+
+    Interface::exibirMensagem("\nPressione ENTER para fechar a lista. ");
+            getchar();
+            getchar();
+            Interface::limparTela();
 }
 
 void Interface::exibirHistorico(const Inventario& inventario) {
+    std::cout << BLUE << "NOME \t\t TIPO \t\t QUANTIDADE \t\t DATA" <<  RESET << std::endl;
     for (const auto& mov : inventario.obterHistorico()) {
-        std::cout << "Nome: " << mov.getNome() << " | " << "Tipo: " << mov.getTipo() << " | " << "Quantidade: " << mov.getQuantidade() << " | " << "Data: ";
+        std::cout << mov.getNome() << " \t\t" << mov.getTipo() << " \t\t" << mov.getQuantidade() << " \t\t";
 
         // Cria uma cópia não constante de mov.getData()
         time_t data = mov.getData();
@@ -66,13 +73,23 @@ void Interface::exibirHistorico(const Inventario& inventario) {
             std::cout << "Erro na conversão de data e hora" << std::endl;
         }
     }
+
+    Interface::exibirMensagem("\nPressione ENTER para fechar o Historico. ");
+            getchar();
+            getchar();
+            Interface::limparTela();
 }
 
 void Interface::verValorTotal(const Inventario& inventario){
 
     double total = inventario.calcularValorTotal();
-    std::cout << "Valor total dos Itens no estoque: " << total << "R$ " << std::endl;
-    
+    std::cout << YELLOW << std::endl;
+    std::cout << "        Valor total :" << GREEN << " R$ " << total  << YELLOW << "      "<< std::endl;
+    std::cout << RESET << std::endl;
+    Interface::exibirMensagem("\nPressione ENTER para voltar ao menu. ");
+    getchar();
+    getchar();
+    Interface::limparTela();
 }
 
 void Interface::limparTela() {
@@ -113,7 +130,7 @@ T Interface::requisitarInfo(const std::string& mensagem) {
             while (!(std::cin >> valor) || std::cin.peek() != '\n') {
                 std::cin.clear(); // Limpa o estado de erro
                 std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Ignora o restante da linha inválida
-                std::cout << "Entrada inválida. Tente novamente: ";
+                std::cout << RED << "Entrada invalida. Tente novamente: " << RESET;
             }
 
         } while (false); // Substitua false por uma condição que indica quando parar o loop
