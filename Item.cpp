@@ -102,7 +102,7 @@ void Item::cadastrarItem(Inventario& inventario){
     try {
 
         Interface::limparTela();
-        std::string nome = Interface::requisitarInfo<std::string>("Digite o nome do item que deseja cadastrar:");
+        std::string nome = Interface::requisitarInfo<std::string>("Digite o nome do item que deseja cadastrar");
         
         // Verifica se já existe um item com o mesmo nome no inventário antes de adicionar
         if(inventario.itemExiste(nome)){
@@ -152,7 +152,7 @@ void Item::removerItem(Inventario& inventario){
             inventario.obterEstoque().erase(it);
             Interface::limparTela();
             std::cout << GREEN << "" ;
-            Interface::exibirMensagem("O item foi Removido do inventário!");
+            Interface::exibirMensagem("O item foi removido do inventario!");
             std::cout << RESET << "" ;
         } else {
             Interface::limparTela();
@@ -177,7 +177,7 @@ void Item::atualizarValor(Inventario& inventario){
             double novoValor = -1;
             while(novoValor < 0){
 
-                novoValor= Interface::requisitarInfo<double>("Digite o novo valor do item:");
+                novoValor= Interface::requisitarInfo<double>("Digite o novo valor do item");
                 if(novoValor<0){
                     std::cout << RED << "" ;
 
@@ -189,7 +189,7 @@ void Item::atualizarValor(Inventario& inventario){
             inventario.getItem(nome).setValor(novoValor);
             Interface::limparTela();
             std::cout << GREEN << "" ;
-            Interface::exibirMensagem("O valor do item foi atualizado");
+            Interface::exibirMensagem("O valor do item foi atualizado.");
             std::cout << RESET << "" ;
         } else {
             // Se o Item não existe

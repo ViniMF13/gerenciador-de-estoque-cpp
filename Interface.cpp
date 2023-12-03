@@ -26,7 +26,7 @@ void Interface::exibirMenu() {
     std::cout << "| 3 - Atualizar Valor               |" << std::endl;
     std::cout << " =================================== " << std::endl;
          //Inventário
-    std::cout << "|           | Iventario |           |" << std::endl;
+    std::cout << "|           | Inventario |           |" << std::endl;
     std::cout << "| 4 - Adicionar itens               |" << std::endl;
     std::cout << "| 5 - Retirar itens                 |" << std::endl;
     std::cout << "| 6 - Listar itens                  |" << std::endl;
@@ -110,7 +110,7 @@ std::string Interface::lerNome(const std::string& mensagem) {
     std::getline(std::cin, nome);
     // Verifica se a entrada está vazia
     while (nome.empty()) {
-        std::cout << "Entrada inválida. Tente novamente: ";
+        std::cout << "Entrada inválida. Tente novamente! ";
         std::getline(std::cin, nome);
     }
 
@@ -130,7 +130,7 @@ T Interface::requisitarInfo(const std::string& mensagem) {
             while (!(std::cin >> valor) || std::cin.peek() != '\n') {
                 std::cin.clear(); // Limpa o estado de erro
                 std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Ignora o restante da linha inválida
-                std::cout << RED << "Entrada invalida. Tente novamente: " << RESET;
+                std::cout << RED << "Entrada invalida. Tente novamente! " << RESET;
             }
 
         } while (false); // Substitua false por uma condição que indica quando parar o loop
