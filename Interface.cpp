@@ -26,7 +26,7 @@ void Interface::exibirMenu() {
     std::cout << "| 3 - Atualizar Valor               |" << std::endl;
     std::cout << " =================================== " << std::endl;
          //Inventário
-    std::cout << "|           | Inventario |           |" << std::endl;
+    std::cout << "|           | Inventario |          |" << std::endl;
     std::cout << "| 4 - Adicionar itens               |" << std::endl;
     std::cout << "| 5 - Retirar itens                 |" << std::endl;
     std::cout << "| 6 - Listar itens                  |" << std::endl;
