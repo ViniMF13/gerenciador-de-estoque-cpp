@@ -7,7 +7,7 @@
 
 int main() {
     Inventario meuInventario;
-    meuInventario.carregarDados("Inventario.json", "Historico.json");
+    meuInventario.carregarDados("output/Inventario.json", "output/Historico.json");
     Interface::limparTela();
     while (true) {
         // Interface::exibirMensagem("\n");
