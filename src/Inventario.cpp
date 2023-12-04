@@ -1,9 +1,8 @@
-#include "Item.hpp"
-#include "Inventario.hpp"
-
-#include "Interface.hpp"
-#include "Movimentacao.hpp"
-#include "Include/JSON/json.hpp"
+#include "../Include/Interface.hpp"
+#include "../Include/Inventario.hpp"
+#include "../Include/Item.hpp"
+#include "../Include/Movimentacao.hpp"
+#include "../Include/JSON/json.hpp"
 
 #include <iostream>
 #include <string>
@@ -44,16 +43,16 @@ Item& Inventario::getItem(std::string& nome){
 }
 
 void Inventario::adicionarItens(){
-  std::string nome = Interface::requisitarInfo<std::string>("Digite o nome do item que deseja adicionar");
+  std::string nome = Interface::solicitarString("Digite o nome do item que deseja adicionar");
 
-  // Verifica se o item está no inventário -------= = = = = = 
+  // Verifica se o item está no inventário 
   if (Inventario::itemExiste(nome)) {
-    // se o item está no inventário -------= = = = = = 
+    // se o item está no inventário 
 
     int quantidade = -1;
     while(quantidade < 0){
 
-        quantidade = Interface::requisitarInfo<int>("Digite a quantidade de itens");    
+        quantidade = Interface::solicitarInt("Digite a quantidade de itens");    
         if(quantidade < 0){
             std::cout << RED << "" ;
             Interface::exibirMensagem("Valor invalido. ");
@@ -83,7 +82,7 @@ void Inventario::adicionarItens(){
 }
 
 void Inventario::retirarItens(){
-  std::string nome = Interface::requisitarInfo<std::string>("Digite o nome do item que deseja retirar");
+  std::string nome = Interface::solicitarString("Digite o nome do item que deseja retirar");
 
   // Verifica se o item está no inventário -------= = = = = = 
   if (Inventario::itemExiste(nome)) {
@@ -91,7 +90,7 @@ void Inventario::retirarItens(){
     int quantidade = -1;
     while(quantidade < 0){
 
-        quantidade = Interface::requisitarInfo<int>("Digite a quantidade de itens");    
+        quantidade = Interface::solicitarInt("Digite a quantidade de itens");    
         if(quantidade < 0){
             std::cout << RED << "" ;
             Interface::exibirMensagem("Valor invalido. ");
@@ -241,16 +240,6 @@ double Inventario::calcularValorTotal() const {
         // Itera sobre cada par (id do item, objeto Item) no inventário
         for (const auto& par : estoque) {
             const Item& item = par.second;
-
-            // Verifica se o valor do item é válido (não é negativo)
-            if (item.getValor() < 0.0) {
-                throw std::invalid_argument("Valor do item não pode ser negativo.");
-            }
-
-            // Verifica se a quantidade do item é válida (não é negativa)
-            if (item.getQuantidade() < 0) {
-                throw std::invalid_argument("Quantidade do item não pode ser negativa.");
-            }
 
             // Calcula o valor total para o item e soma ao total geral
             total += (item.getValor() * item.getQuantidade());

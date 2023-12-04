@@ -1,14 +1,15 @@
 #ifndef INTERFACE_H
 #define INTERFACE_H
 
+#include "../Include/Inventario.hpp"
+#include "../Include/Item.hpp"
 
 #include <iostream>
-#include "Inventario.hpp"
-#include "Item.hpp"
+
 
 class Interface {
 public:
-    // Tipo estático para não precisar criar uma instância da classe antes de chamar um método
+   
     static void exibirMenu();
     static void exibirMensagem(const std::string& mensagem);
     static void limparTela();
@@ -16,10 +17,12 @@ public:
     static void exibirHistorico(const Inventario& inventario);
     static void verValorTotal(const Inventario& inventario);
 
-    static std::string lerNome(const std::string& mensagem);
+    // Funções para leitura de dados do usuário
+    static int solicitarInt(const std::string& mensagem);
+    static double solicitarDouble(const std::string& mensagem);
+    static std::string solicitarString(const std::string& mensagem);
 
-    template <typename T>
-    static T requisitarInfo(const std::string& mensagem);
+
 };
 
 

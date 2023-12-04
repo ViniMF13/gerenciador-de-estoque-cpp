@@ -1,9 +1,9 @@
 #ifndef INVENTARIO_H
 #define INVENTARIO_H
 
-class Item;
+#include "../Include/Item.hpp"
+#include "../Include/Movimentacao.hpp"
 
-#include "Movimentacao.hpp"
 #include <map>
 #include <vector>
 
