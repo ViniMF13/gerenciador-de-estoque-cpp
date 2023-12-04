@@ -19,12 +19,12 @@ int main() {
 
         if (n == 1) {
             Item::cadastrarItem(meuInventario);
-            // Cadastrar itemor();
+            // Cadastrar item();
         } else if (n == 2) {
-            // remover itens ao inventario
+            // remover itens do inventario
             Item::removerItem(meuInventario);
         } else if (n == 3) {
-            // artualizarvalor itens ao inventario
+            // atualizar valor itens do inventario
             Interface::limparTela();
             Item::atualizarValor(meuInventario);
         } else if (n == 4) {
@@ -41,12 +41,12 @@ int main() {
             Interface::exibirItens(meuInventario);
             
         } else if (n == 7) {
-            // 
+            // exibe o valor total do inventario
             Interface::limparTela();
             Interface::verValorTotal(meuInventario);
 
         } else if (n == 8) {
-            // 
+            // exibe historico de movimentações feitas no inventario
             Interface::limparTela();
             Interface::exibirHistorico(meuInventario);
             
