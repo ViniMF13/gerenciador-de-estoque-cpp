@@ -1,8 +1,4 @@
 ﻿# gerenciador-de-estoque-cpp
-/* dependencias:
--Features ( usar como base histórias)
--Como rodar os testes
-*/
 ## Descrição do Projeto
 Um sistema eficiente de gestão de estoque que oferece controle detalhado e fácil acesso às informações sobre os itens disponíveis. Otimize suas operações e mantenha um inventário preciso com as funcionalidades oferecidas por este sistema.
 
