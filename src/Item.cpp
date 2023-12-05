@@ -150,7 +150,7 @@ void Item::removerItem(Inventario& inventario){
             inventario.obterEstoque().erase(it);
             Interface::limparTela();
             std::cout << GREEN << "" ;
-            Interface::exibirMensagem("O item foi Removido do inventário!");
+            Interface::exibirMensagem("O item foi removido do inventario!");
             std::cout << RESET << "" ;
         } else {
             Interface::limparTela();
@@ -187,7 +187,7 @@ void Item::atualizarValor(Inventario& inventario){
             inventario.getItem(nome).setValor(novoValor);
             Interface::limparTela();
             std::cout << GREEN << "" ;
-            Interface::exibirMensagem("O valor do item foi atualizado");
+            Interface::exibirMensagem("O valor do item foi atualizado.");
             std::cout << RESET << "" ;
         } else {
             // Se o Item não existe

@@ -71,7 +71,7 @@ void Inventario::adicionarItens(){
     Inventario::adicionarMovimentacao(nome, "entrada", quantidade);
     Interface::limparTela();
     std::cout << GREEN << "" ;
-    Interface::exibirMensagem("A quantidade de itens foi atualizada");
+    Interface::exibirMensagem("A quantidade de itens foi atualizada.");
     std::cout << RESET << "";
   } else {
     Interface::limparTela();
@@ -123,7 +123,7 @@ void Inventario::retirarItens(){
   } else {
     Interface::limparTela();
     std::cout << RED << "" ;
-    Interface::exibirMensagem("O item nao existe no inventario");
+    Interface::exibirMensagem("O item nao existe no inventario.");
     std::cout << RESET << "" ;
   }    
 }

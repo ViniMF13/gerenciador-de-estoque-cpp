@@ -1,9 +1,7 @@
 ﻿# gerenciador-de-estoque-cpp
 /* dependencias:
--Tabela de conteúdos
 -Features ( usar como base histórias)
 -Como rodar os testes
--Autores
 */
 ## Descrição do Projeto
 Um sistema eficiente de gestão de estoque que oferece controle detalhado e fácil acesso às informações sobre os itens disponíveis. Otimize suas operações e mantenha um inventário preciso com as funcionalidades oferecidas por este sistema.
@@ -19,7 +17,8 @@ Um sistema eficiente de gestão de estoque que oferece controle detalhado e fác
 8. [Ver historico de movimentação](#ver-movimentacoes-feitas-no-estoque)
 9. [Salvar alterações e Sair](#salvar-e-sair)
 10. [Tecnologias Utilizadas](#tecnologias-utilizadas)
-11. [Status do Projeto](#status-do-projeto)
+11. [Autores](#autores)
+12. [Status do Projeto](#status-do-projeto)
 
 ### Cadastro de Novo Item no Estoque
 Como usuário do sistema, você tem a capacidade de cadastrar um novo item no estoque, mantendo um registro atualizado de todos os itens disponíveis.
@@ -114,6 +113,12 @@ Para executar os comandos no terminal:
 ## Tecnologias utilizadas
 As seguintes ferramentas foram usadas na construção do projeto:
 - [C++](https://www.cplusplus.com/)
+
+## Autores 
+- Davi Paulo Vilela Moura
+- Lucas Ferreira Gomes
+- Malu Lauar
+- Vinicius Moreira Faria
 
 ## Status do Projeto
 Em andamento

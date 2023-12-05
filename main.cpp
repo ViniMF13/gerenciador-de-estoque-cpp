@@ -46,7 +46,7 @@ int main() {
             Interface::verValorTotal(meuInventario);
 
         } else if (n == 8) {
-            // 
+            // exibe historico de movimentações feitas no inventario
             Interface::limparTela();
             Interface::exibirHistorico(meuInventario);
             
