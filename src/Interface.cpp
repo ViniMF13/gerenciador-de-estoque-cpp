@@ -1,9 +1,12 @@
 // Interface.cpp
-#include "Interface.hpp"
+#include "../Include/Interface.hpp"
+
 #include <chrono>
 #include <type_traits>
 #include <iostream>
+#include <iomanip>
 #include <map>
+#include <cmath>
 
 #define RESET   "\033[0m"
 #define RED     "\033[31m"
@@ -100,41 +103,64 @@ void Interface::limparTela() {
     #endif
 }
 
-std::string Interface::lerNome(const std::string& mensagem) {
-    std::string nome;
-
-    // Imprime o prompt
+int Interface::solicitarInt(const std::string& mensagem) {
+    int quantidade;
     std::cout << mensagem << ": ";
 
-    // Lê toda a linha, incluindo espaços
-    std::getline(std::cin, nome);
-    // Verifica se a entrada está vazia
-    while (nome.empty()) {
-        std::cout << "Entrada inválida. Tente novamente! ";
+    while (true) {
+        if (std::cin >> quantidade && std::cin.peek() == '\n') {
+            // A entrada é um número inteiro e não contém caracteres adicionais
+            break;
+        } else {
+            std::cin.clear(); // Limpa o estado de erro
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Ignora o restante da linha inválida
+            std::cout << RED << "Entrada inválida. Digite um número inteiro: " << RESET;
+        }
+    }
+
+    return quantidade;
+}
+
+double Interface::solicitarDouble(const std::string& mensagem) {
+    double valor;
+
+    std::cout << mensagem << ": ";
+
+    while (true) {
+        if (std::cin >> valor && std::cin.peek() == '\n') {
+            // A entrada é um número double e não contém caracteres adicionais
+            break;
+        } else {
+            std::cin.clear(); // Limpa o estado de erro
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Ignora o restante da linha inválida
+            std::cout << RED << "Entrada inválida. Digite um número decimal: " << RESET;
+        }
+    }
+
+    // Modifica o valor para ter duas casas decimais se for um número inteiro
+    if (std::floor(valor) == valor) {
+        valor = std::floor(valor * 100) / 100; // Converte para dois decimais
+    }
+
+    return valor;
+}
+
+std::string Interface::solicitarString(const std::string& mensagem) {
+    std::string nome;
+
+    std::cout << mensagem << ": ";
+
+    while (true) {
+        // Lê toda a linha, incluindo espaços
         std::getline(std::cin, nome);
+
+        // Verifica se a entrada não está vazia
+        if (!nome.empty()) {
+            break;
+        } else {
+            std::cout << RED << "Entrada inválida. Tente novamente: " << RESET;
+        }
     }
 
     return nome;
 }
-
-// Função genérica para ler um valor do usuário
-template <typename T>
-T Interface::requisitarInfo(const std::string& mensagem) {
-
-    T valor;
-  
-    do {
-            std::cout << mensagem << ": ";
-
-            // Verifica se o próximo input é do tipo correto
-            while (!(std::cin >> valor) || std::cin.peek() != '\n') {
-                std::cin.clear(); // Limpa o estado de erro
-                std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Ignora o restante da linha inválida
-                std::cout << RED << "Entrada invalida. Tente novamente! " << RESET;
-            }
-
-        } while (false); // Substitua false por uma condição que indica quando parar o loop
-
-        return valor;
-}
-

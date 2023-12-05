@@ -1,8 +1,7 @@
-#include "Item.hpp"
-#include "Inventario.hpp"
-#include "Interface.hpp"
-
-#include "Include/JSON/json.hpp"
+#include "../Include/Interface.hpp"
+#include "../Include/Inventario.hpp"
+#include "../Include/Item.hpp"
+#include "../Include/JSON/json.hpp"
 
 #include <iostream>
 #include <string>
@@ -28,6 +27,7 @@ Item::Item(const std::string& nome, double valor) {
     }
 }
 
+// Construtor com quantidade
 Item::Item(const std::string& nome, double valor, int quantidade) {
     try {
         this->nome = nome;
@@ -38,12 +38,11 @@ Item::Item(const std::string& nome, double valor, int quantidade) {
     }
 }
 
-// Construtor para desserialização do Item 
+// Construtor para desserialização 
 Item::Item(const std::string& jsonString) {
   try {
       nlohmann::json j = nlohmann::json::parse(jsonString);
 
-      // Usando `at` para garantir que a chave exista
       this->id = j.at("id").get<int>();
       this->nome = j.at("nome").get<std::string>();
       this->valor = j.at("valor").get<double>();
@@ -73,7 +72,7 @@ int Item::gerarId() {
     return std::rand() % 10000 + 1;
 }
 
-// Implementação dos métodos getter
+// Implementação dos métodos getters e setters
 int Item::getId() const {
     return id;
 }
@@ -100,9 +99,8 @@ void Item::setQuantidade(int quantidade){
 
 void Item::cadastrarItem(Inventario& inventario){
     try {
-
         Interface::limparTela();
-        std::string nome = Interface::requisitarInfo<std::string>("Digite o nome do item que deseja cadastrar");
+        std::string nome = Interface::solicitarString("Digite o nome do item que deseja cadastrar:");
         
         // Verifica se já existe um item com o mesmo nome no inventário antes de adicionar
         if(inventario.itemExiste(nome)){
@@ -115,7 +113,7 @@ void Item::cadastrarItem(Inventario& inventario){
 
             double valor = -1;
             while(valor < 0){ 
-                valor = Interface::requisitarInfo<double>("Digite o valor do item");
+                valor = Interface::solicitarDouble("Digite o valor do item");
                 if(valor < 0){
                     std::cout << RED << "";
 
@@ -132,7 +130,7 @@ void Item::cadastrarItem(Inventario& inventario){
             std::cout << RESET << "" ;
         }
     } catch (const std::exception& e) {
-        // Tratar exceções relacionadas à entrada do usuário
+        
         Interface::exibirMensagem("Erro ao cadastrar o item: " + std::string(e.what()));
     }
 }
@@ -141,7 +139,7 @@ void Item::removerItem(Inventario& inventario){
     try {
 
         Interface::limparTela();
-        std::string nome = Interface::requisitarInfo<std::string>("Digite o nome do item que deseja remover");
+        std::string nome = Interface::solicitarString("Digite o nome do item que deseja remover");
 
 
         // Verifica se já existe o item no inventário
@@ -168,7 +166,7 @@ void Item::removerItem(Inventario& inventario){
 
 void Item::atualizarValor(Inventario& inventario){
     try {
-        std::string nome = Interface::requisitarInfo<std::string>("Digite o nome do item");
+        std::string nome = Interface::solicitarString("Digite o nome do item");
 
         // Verifica se já existe o item no inventário
         if (inventario.itemExiste(nome)) {
@@ -177,11 +175,11 @@ void Item::atualizarValor(Inventario& inventario){
             double novoValor = -1;
             while(novoValor < 0){
 
-                novoValor= Interface::requisitarInfo<double>("Digite o novo valor do item");
+                novoValor = Interface::solicitarDouble("Digite o novo valor do item");
                 if(novoValor<0){
                     std::cout << RED << "" ;
 
-                    Interface::exibirMensagem("Valor invalido. ");
+                    Interface::exibirMensagem("Valor invalido");
                     std::cout << RESET << "" ;
                 }
             }
@@ -203,3 +201,4 @@ void Item::atualizarValor(Inventario& inventario){
         Interface::exibirMensagem("Erro ao atualizar o valor do item: " + std::string(e.what()));
     }
 }
+

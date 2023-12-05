@@ -1,8 +1,9 @@
 #ifndef ITEM_H
 #define ITEM_H
 
-#include "Inventario.hpp"
 #include <string>
+
+class Inventario;
 
 class Item {
 public:

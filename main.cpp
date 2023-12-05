@@ -1,8 +1,18 @@
-#include "Item.cpp"
-#include "Inventario.cpp"
-#include "Interface.cpp"
-#include "Movimentacao.cpp"
+#include "./Include/Inventario.hpp"
+#include "./Include/Interface.hpp"
+//#include "./src/Interface.cpp"
+#include "./Include/Item.hpp"
+#include "./Include/Movimentacao.hpp"
+
 #include <iostream>
+
+#define RESET   "\033[0m"
+#define RED     "\033[31m"
+#define GREEN   "\033[32m"
+#define YELLOW  "\033[33m"
+#define BLUE    "\033[34m"
+#define MAGENTA "\033[35m"
+#define CYAN    "\033[36m"
 
 
 int main() {
@@ -10,38 +20,28 @@ int main() {
     meuInventario.carregarDados("output/Inventario.json", "output/Historico.json");
     Interface::limparTela();
     while (true) {
-        // Interface::exibirMensagem("\n");
         Interface::exibirMenu();
         // Leitura da escolha do usuário
-
-        int n = Interface::requisitarInfo<int>("Opcao");
-
+        int n = Interface::solicitarInt("Escolha uma opcao");
 
         if (n == 1) {
             Item::cadastrarItem(meuInventario);
-            // Cadastrar item();
         } else if (n == 2) {
-            // remover itens do inventario
             Item::removerItem(meuInventario);
         } else if (n == 3) {
-            // atualizar valor itens do inventario
             Interface::limparTela();
             Item::atualizarValor(meuInventario);
         } else if (n == 4) {
-            // Adicionar itens ao inventario
             Interface::limparTela();
             meuInventario.adicionarItens();
         } else if (n == 5) {
-            // Retirar itens do inventário
             Interface::limparTela();
             meuInventario.retirarItens();
         } else if (n == 6) {
-            // Listar Itens
             Interface::limparTela();
             Interface::exibirItens(meuInventario);
             
         } else if (n == 7) {
-            // exibe o valor total do inventario
             Interface::limparTela();
             Interface::verValorTotal(meuInventario);
 
