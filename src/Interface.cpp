@@ -17,8 +17,6 @@
 #define CYAN    "\033[36m"
 
 
-
-
 void Interface::exibirMenu() {
     // Implementação do menu
     std::cout << YELLOW << " =================================== " << std::endl;
@@ -151,14 +149,15 @@ std::string Interface::solicitarString(const std::string& mensagem) {
     std::cout << mensagem << ": ";
 
     while (true) {
-        // Lê toda a linha, incluindo espaços
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
         std::getline(std::cin, nome);
 
         // Verifica se a entrada não está vazia
         if (!nome.empty()) {
             break;
         } else {
-            std::cout << RED << "Entrada inválida. Tente novamente: " << RESET;
+            std::cout << RED << "Entrada invalida. Tente novamente: " << RESET;
         }
     }
 

@@ -100,7 +100,7 @@ void Item::setQuantidade(int quantidade){
 void Item::cadastrarItem(Inventario& inventario){
     try {
         Interface::limparTela();
-        std::string nome = Interface::solicitarString("Digite o nome do item que deseja cadastrar:");
+        std::string nome = Interface::solicitarString("Digite o nome do item que deseja cadastrar");
         
         // Verifica se já existe um item com o mesmo nome no inventário antes de adicionar
         if(inventario.itemExiste(nome)){
