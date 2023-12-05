@@ -17,19 +17,17 @@
 #define CYAN    "\033[36m"
 
 
-
-
 void Interface::exibirMenu() {
     // Implementação do menu
     std::cout << YELLOW << " =================================== " << std::endl;
         //Item
-    std::cout << "|             | Itens |             |" << std::endl;
+    std::cout << "|             |Item|                |" << std::endl;
     std::cout << "| 1 - Cadastrar                     |" << std::endl;
     std::cout << "| 2 - Remover                       |" << std::endl;
     std::cout << "| 3 - Atualizar Valor               |" << std::endl;
-    std::cout << " =================================== " << std::endl;
+    std::cout << "|-----------------------------------| " << std::endl;
          //Inventário
-    std::cout << "|           | Inventario |          |" << std::endl;
+    std::cout << "|           |Inventario|            |" << std::endl;
     std::cout << "| 4 - Adicionar itens               |" << std::endl;
     std::cout << "| 5 - Retirar itens                 |" << std::endl;
     std::cout << "| 6 - Listar itens                  |" << std::endl;
@@ -60,7 +58,7 @@ void Interface::exibirItens(Inventario& inventario) {
 }
 
 void Interface::exibirHistorico(const Inventario& inventario) {
-    std::cout << BLUE << "NOME \t\t TIPO \t\t QUANTIDADE \t\t DATA" <<  RESET << std::endl;
+    std::cout << BLUE << "Nome \t\t Tipo \t\t Quantidade \t\t Data" <<  RESET << std::endl;
     for (const auto& mov : inventario.obterHistorico()) {
         std::cout << mov.getNome() << " \t\t" << mov.getTipo() << " \t\t" << mov.getQuantidade() << " \t\t";
 
@@ -114,7 +112,7 @@ int Interface::solicitarInt(const std::string& mensagem) {
         } else {
             std::cin.clear(); // Limpa o estado de erro
             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Ignora o restante da linha inválida
-            std::cout << RED << "Entrada inválida. Digite um número inteiro: " << RESET;
+            std::cout << RED << "Entrada invalida. Digite um número inteiro: " << RESET;
         }
     }
 
@@ -133,7 +131,7 @@ double Interface::solicitarDouble(const std::string& mensagem) {
         } else {
             std::cin.clear(); // Limpa o estado de erro
             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Ignora o restante da linha inválida
-            std::cout << RED << "Entrada inválida. Digite um número decimal: " << RESET;
+            std::cout << RED << "Entrada invalida. Digite um número decimal: " << RESET;
         }
     }
 
@@ -151,14 +149,15 @@ std::string Interface::solicitarString(const std::string& mensagem) {
     std::cout << mensagem << ": ";
 
     while (true) {
-        // Lê toda a linha, incluindo espaços
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
         std::getline(std::cin, nome);
 
         // Verifica se a entrada não está vazia
         if (!nome.empty()) {
             break;
         } else {
-            std::cout << RED << "Entrada inválida. Tente novamente: " << RESET;
+            std::cout << RED << "Entrada invalida. Tente novamente: " << RESET;
         }
     }
 

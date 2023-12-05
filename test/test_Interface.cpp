@@ -1,5 +1,5 @@
 #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
-#include "doctest.h"
+#include "./Include/Doctest/doctest.hpp"
 #include "Interface.hpp"  // Certifique-se de incluir o arquivo de cabeçalho correspondente
 
 TEST_CASE("Teste da função solicitarInt") {
