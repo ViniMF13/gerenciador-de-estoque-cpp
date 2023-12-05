@@ -1,0 +1,136 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt-BR">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Documentação Gerenciador de Estoque: Código-Fonte de CODIGOS/Movimentacao.hpp</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Documentação Gerenciador de Estoque<span id="projectnumber">&#160;1.0</span>
+   </div>
+   <div id="projectbrief">Um sistema eficiente de gestão de estoque que oferece controle detalhado e fácil acesso às informações sobre os itens disponíveis. Otimize suas operações e mantenha um inventário preciso com as funcionalidades oferecidas por este sistema.</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Gerado por Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Busca');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function() { init_codefold(0); });
+/* @license-end */
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Carregando...</div>
+<div class="SRStatus" id="Searching">Procurando...</div>
+<div class="SRStatus" id="NoMatches">Nenhuma entrada encontrado</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_15d943d6bb6ba8a95faaaec2c12e9e9f.html">CODIGOS</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle"><div class="title">Movimentacao.hpp</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="_movimentacao_8hpp.html">Ir para a documentação desse arquivo.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef MOVIMENTACAO_H</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define MOVIMENTACAO_H</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &lt;ctime&gt;</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
+<div class="foldopen" id="foldopen00013" data-start="{" data-end="};">
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno"><a class="line" href="class_movimentacao.html">   13</a></span><span class="keyword">class </span><a class="code hl_class" href="class_movimentacao.html">Movimentacao</a> {</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="class_movimentacao.html#a4b8f6ebebca541279f8141c7712d1882">   22</a></span>    <a class="code hl_function" href="class_movimentacao.html#a4b8f6ebebca541279f8141c7712d1882">Movimentacao</a>(<span class="keyword">const</span> std::string&amp; n, std::string&amp; t, <span class="keywordtype">int</span> q);</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno"><a class="line" href="class_movimentacao.html#ae2facab3c29bf4edfb8424a8659c18bd">   32</a></span>    <a class="code hl_function" href="class_movimentacao.html#ae2facab3c29bf4edfb8424a8659c18bd">Movimentacao</a>(<span class="keyword">const</span> std::string&amp; n, std::string&amp; t, <span class="keywordtype">int</span> q, <span class="keywordtype">int</span> d);</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno"><a class="line" href="class_movimentacao.html#a6c2bc9a7624546929aab7e52e1d56d3a">   39</a></span>    <a class="code hl_function" href="class_movimentacao.html#a6c2bc9a7624546929aab7e52e1d56d3a">Movimentacao</a>(<span class="keyword">const</span> std::string&amp; jsonString);</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno"><a class="line" href="class_movimentacao.html#ab3731d7f4ab97df5a4cbd35dc8bd9c78">   46</a></span>    std::string <a class="code hl_function" href="class_movimentacao.html#ab3731d7f4ab97df5a4cbd35dc8bd9c78">getNome</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno"><a class="line" href="class_movimentacao.html#afb7c8e09995855d02dc7d4c63de6c9cd">   53</a></span>    std::string <a class="code hl_function" href="class_movimentacao.html#afb7c8e09995855d02dc7d4c63de6c9cd">getTipo</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno"><a class="line" href="class_movimentacao.html#add8a6b90e218a7d28295c7dd22fff76f">   60</a></span>    <span class="keywordtype">int</span> <a class="code hl_function" href="class_movimentacao.html#add8a6b90e218a7d28295c7dd22fff76f">getQuantidade</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno"><a class="line" href="class_movimentacao.html#a3952910174ec9dccede2a4f804035618">   67</a></span>    std::time_t <a class="code hl_function" href="class_movimentacao.html#a3952910174ec9dccede2a4f804035618">getData</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span> </div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno"><a class="line" href="class_movimentacao.html#a0a98e9d6b0c3c1e230414b6884a09aa7">   74</a></span>    std::string <a class="code hl_function" href="class_movimentacao.html#a0a98e9d6b0c3c1e230414b6884a09aa7">toJson</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span> </div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    std::string nome;</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    std::string tipo;</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    <span class="keywordtype">int</span> quantidade;</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    std::time_t data;</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>};</div>
+</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span> </div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span> </div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span> </div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span><span class="preprocessor">#endif </span></div>
+<div class="ttc" id="aclass_movimentacao_html"><div class="ttname"><a href="class_movimentacao.html">Movimentacao</a></div><div class="ttdoc">Classe que representa a movimentação de itens.</div><div class="ttdef"><b>Definição</b> Movimentacao.hpp:13</div></div>
+<div class="ttc" id="aclass_movimentacao_html_a0a98e9d6b0c3c1e230414b6884a09aa7"><div class="ttname"><a href="class_movimentacao.html#a0a98e9d6b0c3c1e230414b6884a09aa7">Movimentacao::toJson</a></div><div class="ttdeci">std::string toJson() const</div><div class="ttdoc">Converte a movimentação para uma string JSON.</div></div>
+<div class="ttc" id="aclass_movimentacao_html_a3952910174ec9dccede2a4f804035618"><div class="ttname"><a href="class_movimentacao.html#a3952910174ec9dccede2a4f804035618">Movimentacao::getData</a></div><div class="ttdeci">std::time_t getData() const</div><div class="ttdoc">Obtém a data associada ao item.</div></div>
+<div class="ttc" id="aclass_movimentacao_html_a4b8f6ebebca541279f8141c7712d1882"><div class="ttname"><a href="class_movimentacao.html#a4b8f6ebebca541279f8141c7712d1882">Movimentacao::Movimentacao</a></div><div class="ttdeci">Movimentacao(const std::string &amp;n, std::string &amp;t, int q)</div><div class="ttdoc">Construtor para criar uma movimentação.</div></div>
+<div class="ttc" id="aclass_movimentacao_html_a6c2bc9a7624546929aab7e52e1d56d3a"><div class="ttname"><a href="class_movimentacao.html#a6c2bc9a7624546929aab7e52e1d56d3a">Movimentacao::Movimentacao</a></div><div class="ttdeci">Movimentacao(const std::string &amp;jsonString)</div><div class="ttdoc">Construtor para criar uma movimentação a partir de uma string JSON.</div></div>
+<div class="ttc" id="aclass_movimentacao_html_ab3731d7f4ab97df5a4cbd35dc8bd9c78"><div class="ttname"><a href="class_movimentacao.html#ab3731d7f4ab97df5a4cbd35dc8bd9c78">Movimentacao::getNome</a></div><div class="ttdeci">std::string getNome() const</div><div class="ttdoc">Obtém o nome do item.</div></div>
+<div class="ttc" id="aclass_movimentacao_html_add8a6b90e218a7d28295c7dd22fff76f"><div class="ttname"><a href="class_movimentacao.html#add8a6b90e218a7d28295c7dd22fff76f">Movimentacao::getQuantidade</a></div><div class="ttdeci">int getQuantidade() const</div><div class="ttdoc">Obtém a quantidade do item.</div></div>
+<div class="ttc" id="aclass_movimentacao_html_ae2facab3c29bf4edfb8424a8659c18bd"><div class="ttname"><a href="class_movimentacao.html#ae2facab3c29bf4edfb8424a8659c18bd">Movimentacao::Movimentacao</a></div><div class="ttdeci">Movimentacao(const std::string &amp;n, std::string &amp;t, int q, int d)</div><div class="ttdoc">Construtor para criar uma movimentação com data definida.</div></div>
+<div class="ttc" id="aclass_movimentacao_html_afb7c8e09995855d02dc7d4c63de6c9cd"><div class="ttname"><a href="class_movimentacao.html#afb7c8e09995855d02dc7d4c63de6c9cd">Movimentacao::getTipo</a></div><div class="ttdeci">std::string getTipo() const</div><div class="ttdoc">Obtém o tipo do item.</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Gerado por&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>

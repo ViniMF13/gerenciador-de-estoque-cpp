@@ -1,0 +1,156 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt-BR">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Documentação Gerenciador de Estoque: Código-Fonte de CODIGOS/Item.hpp</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Documentação Gerenciador de Estoque<span id="projectnumber">&#160;1.0</span>
+   </div>
+   <div id="projectbrief">Um sistema eficiente de gestão de estoque que oferece controle detalhado e fácil acesso às informações sobre os itens disponíveis. Otimize suas operações e mantenha um inventário preciso com as funcionalidades oferecidas por este sistema.</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Gerado por Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Busca');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function() { init_codefold(0); });
+/* @license-end */
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Carregando...</div>
+<div class="SRStatus" id="Searching">Procurando...</div>
+<div class="SRStatus" id="NoMatches">Nenhuma entrada encontrado</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_15d943d6bb6ba8a95faaaec2c12e9e9f.html">CODIGOS</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle"><div class="title">Item.hpp</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="_item_8hpp.html">Ir para a documentação desse arquivo.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef ITEM_H</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define ITEM_H</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="keyword">class </span><a class="code hl_class" href="class_inventario.html">Inventario</a>;</div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
+<div class="foldopen" id="foldopen00014" data-start="{" data-end="};">
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="class_item.html">   14</a></span><span class="keyword">class </span><a class="code hl_class" href="class_item.html">Item</a> {</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="class_item.html#a904c62f3bab943d962bf4d6be8728d4b">   23</a></span>    <a class="code hl_function" href="class_item.html#a904c62f3bab943d962bf4d6be8728d4b">Item</a>(<span class="keyword">const</span> std::string&amp; nome, <span class="keywordtype">double</span> valor, <span class="keywordtype">int</span> quantidade);</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno"><a class="line" href="class_item.html#a8ff5cdc148e3b089d7f1f44be7a9e457">   31</a></span>    <a class="code hl_function" href="class_item.html#a8ff5cdc148e3b089d7f1f44be7a9e457">Item</a>(<span class="keyword">const</span> std::string&amp; nome, <span class="keywordtype">double</span> valor);</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno"><a class="line" href="class_item.html#a17c8e17c0c7ecbef3b98b92dddbc52ed">   38</a></span>    <a class="code hl_function" href="class_item.html#a17c8e17c0c7ecbef3b98b92dddbc52ed">Item</a>(<span class="keyword">const</span> std::string&amp; jsonString); </div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno"><a class="line" href="class_item.html#a97ec89c4088c971e7ee5928248816f5b">   45</a></span>    std::string <a class="code hl_function" href="class_item.html#a97ec89c4088c971e7ee5928248816f5b">toJson</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno"><a class="line" href="class_item.html#a74b41f137200eea8fcdeb26bba0a332b">   52</a></span>    <span class="keywordtype">int</span> <a class="code hl_function" href="class_item.html#a74b41f137200eea8fcdeb26bba0a332b">getId</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno"><a class="line" href="class_item.html#acb31bcb1eb27f940a3ab359b6744df1c">   59</a></span>    std::string <a class="code hl_function" href="class_item.html#acb31bcb1eb27f940a3ab359b6744df1c">getNome</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    </div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno"><a class="line" href="class_item.html#aa887b2c3c4ccae299431007957bd3664">   66</a></span>    <span class="keywordtype">double</span> <a class="code hl_function" href="class_item.html#aa887b2c3c4ccae299431007957bd3664">getValor</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span> </div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno"><a class="line" href="class_item.html#ac918d1b6e005c1f5fa7c51b38ab74c72">   73</a></span>    <span class="keywordtype">int</span> <a class="code hl_function" href="class_item.html#ac918d1b6e005c1f5fa7c51b38ab74c72">getQuantidade</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    </div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno"><a class="line" href="class_item.html#ad90d5b6d2828292b935828b28f2de162">   80</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_item.html#ad90d5b6d2828292b935828b28f2de162">setValor</a>(<span class="keywordtype">double</span> valor);</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span> </div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno"><a class="line" href="class_item.html#a2c83ff2fdda0b61baaf53e55d781c0ae">   87</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_item.html#a2c83ff2fdda0b61baaf53e55d781c0ae">setQuantidade</a>(<span class="keywordtype">int</span> quantidade);</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>    </div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno"><a class="line" href="class_item.html#a67e727a9d1717067821d5d7cca5378e7">   94</a></span>    <span class="keyword">static</span> <span class="keywordtype">int</span> <a class="code hl_function" href="class_item.html#a67e727a9d1717067821d5d7cca5378e7">gerarId</a>();</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span> </div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno"><a class="line" href="class_item.html#a1751f574df20e0a27273f4b73e3f0159">  101</a></span>    <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code hl_function" href="class_item.html#a1751f574df20e0a27273f4b73e3f0159">cadastrarItem</a>(<a class="code hl_class" href="class_inventario.html">Inventario</a>&amp; inventario);</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span> </div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno"><a class="line" href="class_item.html#a712644f64c995a119940248b63e7d1c2">  108</a></span>    <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code hl_function" href="class_item.html#a712644f64c995a119940248b63e7d1c2">removerItem</a>(<a class="code hl_class" href="class_inventario.html">Inventario</a>&amp; inventario);</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span> </div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno"><a class="line" href="class_item.html#a3370a9b950c1f4c53b04e7efc2b4bc6c">  115</a></span>    <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code hl_function" href="class_item.html#a3370a9b950c1f4c53b04e7efc2b4bc6c">atualizarValor</a>(<a class="code hl_class" href="class_inventario.html">Inventario</a>&amp; inventario);</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span> </div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>    <span class="keywordtype">int</span> id;</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>    std::string nome;</div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>    <span class="keywordtype">double</span> valor;</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>    <span class="keywordtype">int</span> quantidade;</div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span> </div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>};</div>
+</div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span> </div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span> </div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span><span class="preprocessor">#endif </span><span class="comment">// ITEM_H</span></div>
+<div class="ttc" id="aclass_inventario_html"><div class="ttname"><a href="class_inventario.html">Inventario</a></div><div class="ttdef"><b>Definição</b> Inventario.hpp:11</div></div>
+<div class="ttc" id="aclass_item_html"><div class="ttname"><a href="class_item.html">Item</a></div><div class="ttdoc">Classe que representa os itens.</div><div class="ttdef"><b>Definição</b> Item.hpp:14</div></div>
+<div class="ttc" id="aclass_item_html_a1751f574df20e0a27273f4b73e3f0159"><div class="ttname"><a href="class_item.html#a1751f574df20e0a27273f4b73e3f0159">Item::cadastrarItem</a></div><div class="ttdeci">static void cadastrarItem(Inventario &amp;inventario)</div><div class="ttdoc">Cadastra um novo item no inventário.</div></div>
+<div class="ttc" id="aclass_item_html_a17c8e17c0c7ecbef3b98b92dddbc52ed"><div class="ttname"><a href="class_item.html#a17c8e17c0c7ecbef3b98b92dddbc52ed">Item::Item</a></div><div class="ttdeci">Item(const std::string &amp;jsonString)</div><div class="ttdoc">Construtor para criar um item a partir de uma string JSON.</div></div>
+<div class="ttc" id="aclass_item_html_a2c83ff2fdda0b61baaf53e55d781c0ae"><div class="ttname"><a href="class_item.html#a2c83ff2fdda0b61baaf53e55d781c0ae">Item::setQuantidade</a></div><div class="ttdeci">void setQuantidade(int quantidade)</div><div class="ttdoc">Define a quantidade de itens no estoque.</div></div>
+<div class="ttc" id="aclass_item_html_a3370a9b950c1f4c53b04e7efc2b4bc6c"><div class="ttname"><a href="class_item.html#a3370a9b950c1f4c53b04e7efc2b4bc6c">Item::atualizarValor</a></div><div class="ttdeci">static void atualizarValor(Inventario &amp;inventario)</div><div class="ttdoc">Atualiza o valor de um item no inventário.</div></div>
+<div class="ttc" id="aclass_item_html_a67e727a9d1717067821d5d7cca5378e7"><div class="ttname"><a href="class_item.html#a67e727a9d1717067821d5d7cca5378e7">Item::gerarId</a></div><div class="ttdeci">static int gerarId()</div><div class="ttdoc">Gera um ID único para o item.</div></div>
+<div class="ttc" id="aclass_item_html_a712644f64c995a119940248b63e7d1c2"><div class="ttname"><a href="class_item.html#a712644f64c995a119940248b63e7d1c2">Item::removerItem</a></div><div class="ttdeci">static void removerItem(Inventario &amp;inventario)</div><div class="ttdoc">Remove um item do inventário.</div></div>
+<div class="ttc" id="aclass_item_html_a74b41f137200eea8fcdeb26bba0a332b"><div class="ttname"><a href="class_item.html#a74b41f137200eea8fcdeb26bba0a332b">Item::getId</a></div><div class="ttdeci">int getId() const</div><div class="ttdoc">Retorna o ID do item.</div></div>
+<div class="ttc" id="aclass_item_html_a8ff5cdc148e3b089d7f1f44be7a9e457"><div class="ttname"><a href="class_item.html#a8ff5cdc148e3b089d7f1f44be7a9e457">Item::Item</a></div><div class="ttdeci">Item(const std::string &amp;nome, double valor)</div><div class="ttdoc">Construtor para criar um item com quantidade padrão de 0.</div></div>
+<div class="ttc" id="aclass_item_html_a904c62f3bab943d962bf4d6be8728d4b"><div class="ttname"><a href="class_item.html#a904c62f3bab943d962bf4d6be8728d4b">Item::Item</a></div><div class="ttdeci">Item(const std::string &amp;nome, double valor, int quantidade)</div><div class="ttdoc">Construtor para criar um item com quantidade definida.</div></div>
+<div class="ttc" id="aclass_item_html_a97ec89c4088c971e7ee5928248816f5b"><div class="ttname"><a href="class_item.html#a97ec89c4088c971e7ee5928248816f5b">Item::toJson</a></div><div class="ttdeci">std::string toJson() const</div><div class="ttdoc">Serializa o item em uma string JSON.</div></div>
+<div class="ttc" id="aclass_item_html_aa887b2c3c4ccae299431007957bd3664"><div class="ttname"><a href="class_item.html#aa887b2c3c4ccae299431007957bd3664">Item::getValor</a></div><div class="ttdeci">double getValor() const</div><div class="ttdoc">Retorna o valor do item.</div></div>
+<div class="ttc" id="aclass_item_html_ac918d1b6e005c1f5fa7c51b38ab74c72"><div class="ttname"><a href="class_item.html#ac918d1b6e005c1f5fa7c51b38ab74c72">Item::getQuantidade</a></div><div class="ttdeci">int getQuantidade() const</div><div class="ttdoc">Retorna a quantidade de itens.</div></div>
+<div class="ttc" id="aclass_item_html_acb31bcb1eb27f940a3ab359b6744df1c"><div class="ttname"><a href="class_item.html#acb31bcb1eb27f940a3ab359b6744df1c">Item::getNome</a></div><div class="ttdeci">std::string getNome() const</div><div class="ttdoc">Retorna o nome do item.</div></div>
+<div class="ttc" id="aclass_item_html_ad90d5b6d2828292b935828b28f2de162"><div class="ttname"><a href="class_item.html#ad90d5b6d2828292b935828b28f2de162">Item::setValor</a></div><div class="ttdeci">void setValor(double valor)</div><div class="ttdoc">Define o valor do item.</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Gerado por&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>
